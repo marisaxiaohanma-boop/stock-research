@@ -31,9 +31,9 @@ Generated with this skill (v3.0 format):
 
 | Ticker | Company | Sector | Drawdown | AI Conviction |
 |--------|---------|--------|----------|---------------|
-| [RBLX](memos/rblx.html) | Roblox | Tech / Consumer Platform | −62.8% | 7/10 |
-| [HIMS](memos/hims.html) | Hims & Hers Health | Healthcare / Consumer | −46.2% | 6/10 |
-| [NKE](memos/nke.html) | Nike | Consumer Discretionary | −54.3% | 5/10 |
+| [RBLX](https://marisaxiaohanma-boop.github.io/stock-research/memos/rblx.html) | Roblox | Tech / Consumer Platform | −62.8% | 7/10 |
+| [HIMS](https://marisaxiaohanma-boop.github.io/stock-research/memos/hims.html) | Hims & Hers Health | Healthcare / Consumer | −46.2% | 6/10 |
+| [NKE](https://marisaxiaohanma-boop.github.io/stock-research/memos/nke.html) | Nike | Consumer Discretionary | −54.3% | 5/10 |
 
 ## File structure
 
