@@ -511,151 +511,112 @@ Each section also has a 💬 comment button added by JavaScript — memo prompt 
 
 [Hero — see §7 for HTML structure]
 
-[IF setup_gate is "✗ Below 50%": WARNING CALLOUT]
-
 [IF mode == refresh: §0 Since Last Run diff section]
 
 ## §0 Since Last Run [Mode B only]
-*[only present in refresh runs]*
-
 [Diff table: metric / last run / now / Δ for: Price, Drawdown, Conviction, Problem Type]
-
-**What changed:** [3-4 sentences]
-**Recommendation change:** [if conviction or position moved]
+**What changed:** [2-3 sentences]
 
 ---
 
-## §1 Snapshot
-**Insight first:** 2-3 sentences: what is this company, what happened to the stock, and what's the one-line take.
-**Key cards (3):** Thesis in one sentence / Biggest risk in one sentence / Our position (Watch / Considering / Avoid + conviction score).
-No bullet lists. Cards only.
+## §1 Industry & Sector
+*Start here. Before the stock, understand the playing field.*
 
-## §2 The Setup *[AI-generated]*
-**Insight first:** Open with *why the stock is down* in 1-2 sentences — the single clearest causal explanation.
-Then: 2-3 paragraphs walking through the drawdown story chronologically.
-End with: "The market is currently pricing this as: [X]" — one concrete framing of the bear case consensus.
+**Insight first (2-3 sentences):** Is this a growing, mature, or declining industry? What's the one thing an outsider needs to know to understand the opportunity or risk?
 
-## §3 Short-Term or Structural? *[AI-generated — central question]*
-**Insight first:** State the verdict upfront — "We think this is a [Short-term / Structural / Mixed] problem because [one sentence]."
-Then: Bull case (Short-term) / Bear case (Structural) as two side-by-side cards, 3-4 points each.
-End with: Verdict box — Problem Type / Confidence / Biggest remaining uncertainty.
+**Key cards (3–4):**
+- TAM: total addressable market size + growth rate + source
+- Demand trend: is customer demand expanding, contracting, or shifting? (cite a concrete signal)
+- Industry structure: who controls the value chain (suppliers / company / distributors / customers)?
+- Tailwind / headwind: the single most important macro or regulatory factor right now
 
-## §4 Financial Trajectory
-**Insight first:** 2-3 sentences — is revenue growing or shrinking, are margins improving or compressing, is cash building or depleting? What does the trend mean for this thesis?
-**Key cards (3–4):** Revenue growth (latest QoQ + YoY) / Gross margin trend / FCF generation / Net cash or debt position.
-Each card: metric name + value + one-line interpretation ("margins compressing — GLP-1 pricing pressure").
-**Supporting detail below:** Revenue table (5+ periods) · Margins table (3+ years: Gross / Operating / FCF) · Balance sheet breakdown.
+**Supporting detail:** sector competitive dynamics, upstream/downstream analysis, regulatory landscape, key players, market share concentration. Sources: SEC filing industry disclosures + authoritative trade publications + earnings call language.
 
-## §5 Valuation
-**Insight first:** 1-2 sentences — cheap, fair, or expensive vs. its own history and sector peers? One-line bottom line.
-**Key cards (3):** P/E TTM vs. sector avg vs. 5Y company avg / EV/Revenue or EV/EBITDA vs. nearest peer / FCF yield.
-**Supporting detail below:** Full valuation table (current vs. 5Y history: P/E TTM, Fwd P/E, EV/EBITDA, EV/Sales, FCF Yield) · Peer comparison table (3-4 peers).
+---
 
-## §6 Business & Moat *[AI-generated]*
-**Insight first:** 2-3 sentences — what does this company actually do, and why is it hard to compete with them?
-**Key cards (2–3):** Moat type (network effects / brand / switching cost / cost advantage) / Biggest vulnerability / Replicability rating (Hard / Medium / Easy to replicate).
-**Supporting detail:** Full moat analysis, competitive landscape.
+## §2 Business & Financials
+*What does this company do, and is the business healthy?*
 
-## §7 Macro & Sector
-**Insight first:** Is the macro environment a tailwind, headwind, or neutral for this name right now?
-**Key cards (2–3):** Most relevant macro factor + direction / Sector-specific dynamic / Regulatory or tariff exposure.
-Supporting detail: full sector dynamics, currency exposure, etc.
+**Business insight (2-3 sentences):** How does the company make money, and what's its edge? Why is it hard to replace?
 
-## §8 Capital Structure & Returns
-**Insight first:** Is the balance sheet a source of strength or a risk in this thesis? One sentence.
-**Key cards (3):** Net cash / debt position (and whether it's improving) / Annual FCF vs. debt obligations / Shareholder return (buyback + dividend yield).
-Each card should say whether the metric is a positive or negative signal for the thesis.
-**Supporting detail:** Full debt schedule, buyback history, M&A, capex trajectory.
+**Key business cards (2–3):**
+- Moat type: network effects / brand / switching cost / cost advantage / IP — and how strong is it?
+- Revenue model: recurring vs. transactional, geographic mix, customer concentration
+- Competitive position: market share trend + 1 key differentiator vs. closest peer
 
-## §9 Catalysts (Next 12 Months)
-3-5 dated catalyst blocks with priority (P0/P1/P2):
-- [Title] [Priority] [Date] — [body explaining the catalyst]
+**Financial insight (1-2 sentences):** Is the financial trajectory improving or deteriorating? What does the data say about the company's trajectory?
 
-## §10 Trading Signals
-| Signal | Reading | Tiebreaker |
-| Insider activity | ... | +1/0/-1 |
-| Institutional flow | ... | +1/0/-1 |
-| Short interest | ... | +1/0/-1 |
-| Volume pattern | ... | +1/0/-1 |
-| Sentiment temperature | ... | +1/0/-1 |
-**Aggregate read:** [confirms / contradicts / neutral]
+**Key financial cards (4):**
+- Revenue growth: latest QoQ + YoY + trend direction
+- Margin trajectory: gross margin + operating margin + direction (expanding / compressing)
+- Cash generation: FCF (last 12 months) + FCF yield
+- Balance sheet: net cash or net debt + coverage ratio
 
-## §11 Smart Money Perspective *[AI-generated — framework inference]*
-[NEW in v2.1]
+**Supporting detail:** Revenue table (5+ periods with segment breakdown) · Margins table (3+ years) · Balance sheet breakdown · Valuation table (P/E TTM vs. sector avg vs. 5Y avg, EV/EBITDA, FCF yield) · Peer comparison (3 peers).
 
-**Disclaimer up front (REQUIRED — render as a styled callout box before the framework blocks):**
-> "The source links below point to each institution's **public research pages** — not to specific articles about [TICKER]. The frameworks are **inferred** by applying each firm's known investment thesis (from their published writing) to [TICKER]'s current situation. This is how a sector specialist might think about the stock, not a record of what they've actually said. Always verify before citing. **Frameworks applied — not direct quotes.**"
+---
 
-**Source link rules (STRICT):**
-- Each firm card may include ONE link, labeled **"[Firm name] research page ↗"** — pointing to the firm's research index (e.g. `a16z.com/games/`, `bvp.com/atlas`).
-- Do NOT add "Sources:" chips or multiple links per firm. Do NOT fabricate specific article URLs.
-- If a verified, publicly accessible article about this specific ticker exists (confirmed by Firecrawl), it may be linked with label **"[Article title] ↗"** — but only if it was actually retrieved, not guessed.
-- Framework blocks must NOT have a "Sources:" section. The only links are in the firm cards (the 8 institution cards above the framework blocks), not in the framework analysis itself.
-- The disclaimer callout (see above) must appear prominently before the framework blocks so readers understand the inference nature before engaging with the content.
+## §3 Catalysts & Thesis
+*What changes the stock price, and is this a short-term or structural situation?*
 
-### The 8 firms surveyed for [SECTOR]
-Prose intro: monthly-refreshed cache. Selected for sector authority + public communication.
+**Catalyst insight (1-2 sentences):** What are the 1-2 things most likely to move this stock in the next 6-12 months?
 
-[Firms grid — 8 cards from sector-firms.json]:
-For each firm:
-- Tier label ("PRIMARY VC" or "SECONDARY (Public-Market)")
-- Firm name
-- AUM + sector descriptor
-- Framework / thesis (from registry)
-- Public communication note (blog / letters / reports)
+**Catalyst cards (3–5, prioritized):** Each card: event name · date or timeframe · likely impact (positive/negative/uncertain) · why it matters in one line.
 
-### How these frameworks read [TICKER]
-[5 framework blocks from §3.8 LLM synthesis output]:
-For each (5 of 8 firms most relevant to this ticker):
-- Firm name (h4)
-- 2-4 sentences applying the firm's framework to ticker
-- Bold "Applied to {TICKER}:" leading the position-implication sentence
-- Disclaimer: "Framework applied — not a direct quote"
+**Thesis judgment:** Is the drawdown driven by a short-term problem (recoverable 12-18 months) or a structural problem (2+ years or permanent)?
+- State verdict first: "We think this is [Short-term / Structural / Mixed] because [one sentence]."
+- Bull case (Short-term): 3-4 evidence points
+- Bear case (Structural): 3-4 evidence points
+- Biggest remaining uncertainty: one sentence
 
-### Synthesis
-**Where they agree:** [4 bullets, each with X/8 tally]
-**Where they diverge:** [4 bullets organized by investor camp]
+---
 
-### Read
-1-2 sentences. The agree/diverge pattern itself is informative.
+## §4 Smart Money Perspective
+*How do sector-specialist investors think about this type of situation?*
 
-## §12 Entry & Exit Plan *[AI-generated]*
-[was §11 in v2.0]
-Setup gate met: ✓ / ✗
-Position recommendation: Watch / Considering / Avoid
+**DISCLAIMER (render as visible callout box):** "These frameworks are AI-inferred from each institution's publicly known investment philosophy — not direct statements about {{TICKER}}. Source links go to institution research pages, not ticker-specific articles. Always verify independently. **Frameworks applied — not direct quotes.**"
 
-### If Considering:
-- Batch sizes: 30-40% / 30-40% / 20-40%
-- Add triggers (3-5 specific)
-- Final fill triggers
+**The 8 institutions surveyed for [SECTOR]:**
+[Firms grid — 8 cards: Tier label · Name · AUM/descriptor · Framework thesis · ONE link to research page]
 
-### Exit triggers (any 1):
-- Thesis flip
-- 60%+ unrealized gain
-- Better risk/reward + lowest conviction
-- Ticker-specific exits
+**How 5 of these frameworks read {{TICKER}}:**
+[5 framework blocks: firm name → 2-4 sentences applying framework → position implication → "Framework applied — not a direct quote"]
 
-### What would change conviction
-Up scenarios + Down scenarios
+**Synthesis:**
+- Where they agree: [3-4 points]
+- Where they diverge: [2-3 points by camp]
+- Bottom line: [1-2 sentences]
 
-## §13 Bull / Bear Case *[AI-generated]*
-[was §12 in v2.0]
-🐂 Bull: 3-4 numbered arguments
-🐻 Bear: 3-4 numbered arguments
+---
 
-## §14 Data Gaps & Sources
-[was §13 in v2.0]
-### Official Filings
-- 10-K, 10-Q, 8-K, DEF 14A, latest earnings transcript
+## §5 Entry & Exit Plan
+*Simple, actionable. Key price levels only.*
 
-### Market Data
-- Yahoo Finance, Whalewisdom, OpenInsider, IR page
+**Position:** Watch / Considering / Avoid — Conviction {{AI_CONVICTION}}/10
 
-### News & Analysis
-- 3-5 articles with publication, link, date
+**Entry plan (if Considering):**
+- First buy: price level or trigger condition + allocation (e.g. "30% at current price or a further 5-10% dip")
+- Add trigger: one specific event or price level that would add to position
+- Full size: what would it take to go full allocation
 
-### Data Gaps
-- Anything unresolved, source conflicts, sector firms registry coverage notes
+**Exit plan:**
+- Cut: if [specific condition], thesis has changed → exit
+- Take profit: [price target or % gain]
+- Stop-loss: [optional — only if a clear technical level exists]
+
+**What would change conviction:**
+- More bullish if: [1-2 scenarios]
+- More bearish if: [1-2 scenarios]
+
+---
+
+## §6 Data Sources
+**SEC Filings:** 10-K [date] · 10-Q [date] · 8-K [key dates] · latest earnings call transcript [date]
+**Market data:** Yahoo Finance (price, multiples, short interest)
+**Insider activity:** OpenInsider Form 4 filings
+**Institutional:** Whalewisdom 13-F aggregations
+**News & analysis:** [3-5 sources with publication, link, date]
+**Data gaps:** [anything unresolved, source conflicts, registry coverage notes]
 ```
 
 ### LLM system prompt for memo synthesis
@@ -733,7 +694,7 @@ Skill expects template at `~/.claude/skills/stock-research/memo-template.html`.
   - **Conviction cell:** `{{AI_CONVICTION}}/10`
   - **Position cell:** `{{AI_POSITION}}`
 - Do NOT add a hero-meta line ("AI-generated sections marked inline", "Research mode", etc.)
-- Do NOT add a data source attribution line below the hero bar — data provenance belongs in §14 Sources, not the hero
+- Do NOT add a data source attribution line below the hero bar — data provenance belongs in §6 Sources, not the hero
 
 **Section structure (each of §0–§14):**
 ```html
@@ -781,24 +742,16 @@ JavaScript on page load:
 | Sources grid | `<div class="sources-grid">` w/ `.source-group` |
 | Diff table (§0) | `<table class="diff-table">` |
 
-**Section chip mapping:**
+**Section chip mapping (6-section structure):**
 
-| § | Label |
-|---|---|
-| 1 | SNAPSHOT |
-| 2 | THE SETUP |
-| 3 | CORE QUESTION |
-| 4 | FINANCIAL TRAJECTORY |
-| 5 | VALUATION |
-| 6 | BUSINESS & MOAT |
-| 7 | MACRO & SECTOR |
-| 8 | CAPITAL STRUCTURE |
-| 9 | CATALYSTS |
-| 10 | TRADING SIGNALS |
-| 11 | **SMART MONEY** ← new |
-| 12 | ENTRY & EXIT |
-| 13 | BULL / BEAR CASE |
-| 14 | SOURCES |
+| § | Label | Content focus |
+|---|---|---|
+| 1 | INDUSTRY & SECTOR | TAM, demand trend, value chain, tailwinds/headwinds |
+| 2 | BUSINESS & FINANCIALS | Moat, revenue model, financial trajectory, valuation |
+| 3 | CATALYSTS & THESIS | Near-term catalysts, short-term vs. structural judgment |
+| 4 | **SMART MONEY** | 8-firm framework inference + synthesis |
+| 5 | ENTRY & EXIT | Simple price levels and triggers |
+| 6 | SOURCES | SEC filings, market data, news, data gaps |
 
 ---
 
