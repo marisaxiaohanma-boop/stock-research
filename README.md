@@ -5,13 +5,15 @@ A Claude Code skill that generates investor-grade research memos for US public s
 ## What it does
 
 1. **Validates input** — resolves ticker to SEC CIK, confirms public company
-2. **Pulls SEC EDGAR data** — 8 quarters of XBRL financials (revenue, net income, FCF, balance sheet)
-3. **Fetches market data** — price, 52W range, market cap, P/E, short interest via Yahoo Finance
+2. **Pulls SEC EDGAR data** — 8 quarters of XBRL financials (revenue, net income, FCF, balance sheet) from latest 10-K/10-Q
+3. **Fetches market data** — price, 52W range + percentile position, market cap + size classification, P/E, short interest via Yahoo Finance
 4. **Scrapes insider signals** — Form 4 filings via OpenInsider, 13-F aggregations via Whalewisdom
-5. **Reads the news** — 5–8 articles prioritized from WSJ, Bloomberg, FT, earnings call transcripts
+5. **Reads the news** — 5–8 articles from WSJ, Bloomberg, FT, sector trade press, plus latest earnings call transcript
 6. **Smart Money analysis** — applies 8 sector-specific investor frameworks (5 primary VC + 3 public-market) to the ticker; synthesizes where they agree and diverge
 7. **Synthesizes 14-section memo** — hypothesis, financials, valuation, moat, entry/exit, bull/bear cases
 8. **Outputs HTML + JSON** — `~/Documents/stock-research/{ticker}.html` with comment system and PDF export
+
+**Data sources in each memo:** SEC EDGAR (fundamentals baseline) · Yahoo Finance (price & market data) · OpenInsider Form 4 (insider activity) · Whalewisdom 13-F (institutional) · IR site + earnings call (latest news)
 
 **Cost:** ~$0.28 per full memo · **Time:** ~7–9 minutes
 
@@ -23,17 +25,17 @@ The §11 Smart Money section is the tool's primary differentiator. For each sect
 - Does the company fit their investment criteria?
 - Where do the 8 frameworks agree vs. diverge?
 
-Frameworks are **inferred from public writing** — blog posts, letters, annual reports — not invented quotes. Every block ends with a disclaimer.
+Frameworks are **inferred from public writing** — blog posts, letters, annual reports — not invented quotes. Every block ends with a disclaimer. Source links in each memo point to the institution's **public research index pages**, not to specific articles about the ticker — the frameworks are applied by inference, not direct citation.
 
 ## Sample memos
 
-Generated with this skill (v3.0 format):
+Generated with this skill (v3.0 format). Click a ticker to open the rendered memo:
 
-| Ticker | Company | Sector | Drawdown | AI Conviction |
-|--------|---------|--------|----------|---------------|
-| [RBLX](https://marisaxiaohanma-boop.github.io/stock-research/memos/rblx.html) | Roblox | Tech / Consumer Platform | −62.8% | 7/10 |
-| [HIMS](https://marisaxiaohanma-boop.github.io/stock-research/memos/hims.html) | Hims & Hers Health | Healthcare / Consumer | −46.2% | 6/10 |
-| [NKE](https://marisaxiaohanma-boop.github.io/stock-research/memos/nke.html) | Nike | Consumer Discretionary | −54.3% | 5/10 |
+| Ticker | Company | Sector | Price | 52W %ile | Drawdown | Mkt Cap | AI Conviction |
+|--------|---------|--------|-------|----------|----------|---------|---------------|
+| [RBLX](https://marisaxiaohanma-boop.github.io/stock-research/memos/rblx.html) | Roblox | Tech / Consumer Platform | $56.09 | 5th %ile | −62.8% | $40.2B Large-cap | 7/10 |
+| [HIMS](https://marisaxiaohanma-boop.github.io/stock-research/memos/hims.html) | Hims & Hers Health | Healthcare / Consumer | $27.88 | 25th %ile | −60.4% | $6.35B Mid-cap | 6/10 |
+| [NKE](https://marisaxiaohanma-boop.github.io/stock-research/memos/nke.html) | Nike | Consumer Discretionary | $44.69 | 6th %ile | −44.3% | $66.2B Large-cap | 6/10 |
 
 ## File structure
 
