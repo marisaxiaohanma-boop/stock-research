@@ -289,10 +289,26 @@ main { max-width: var(--body-max); padding-top: 48px; }
   font-family: var(--font-headline);
   font-size: 21px;
   font-weight: 500;
-  line-height: 1.1;
+  line-height: 1.2;
   letter-spacing: -0.015em;
   color: var(--color-navy-deep);
-  white-space: nowrap;
+}
+.hero-source-note {
+  font-size: 11px;
+  color: var(--color-text-muted);
+  font-family: var(--font-mono);
+  letter-spacing: 0.01em;
+  margin-top: -18px;
+  margin-bottom: 28px;
+}
+.smart-money-context {
+  font-size: 12.5px;
+  color: var(--color-text-muted);
+  background: var(--color-bg-soft, #f8f8f6);
+  border-left: 3px solid var(--color-rule);
+  padding: 10px 14px;
+  margin: 0 0 22px;
+  line-height: 1.55;
 }
 .metric-value.negative { color: var(--color-warning); }
 .metric-value.positive-gate { color: var(--color-positive); }
@@ -1240,7 +1256,7 @@ footer .disclaimer {
       <div class="metric-bar">
         <div class="metric-cell">
           <div class="metric-label">Price</div>
-          <div class="metric-value">$56.09</div>
+          <div class="metric-value">$56.09<br><span class="small">5th %ile 52W</span></div>
         </div>
         <div class="metric-cell">
           <div class="metric-label">Drawdown</div>
@@ -1248,7 +1264,7 @@ footer .disclaimer {
         </div>
         <div class="metric-cell">
           <div class="metric-label">Mkt Cap</div>
-          <div class="metric-value">$40.2B</div>
+          <div class="metric-value">$40.2B<br><span class="small">Large-cap</span></div>
         </div>
         <div class="metric-cell">
           <div class="metric-label">P/E TTM</div>
@@ -1269,6 +1285,7 @@ footer .disclaimer {
       </div>
 
       <p class="hero-meta">Generated April 25, 2026  ·  ~14 min read  ·  AI-generated sections marked inline  ·  Mode A (Research)</p>
+      <p class="hero-source-note">Fundamentals: SEC EDGAR 10-K/10-Q (latest filing) · Market data &amp; price: Yahoo Finance · Insider activity: OpenInsider Form 4 · Institutional: Whalewisdom 13-F · News: IR site + trade press + earnings call transcript</p>
     </header>
 
     <!-- Setup gate warning callout (only when gate ✗ — empty string when ✓) -->
@@ -1724,7 +1741,7 @@ footer .disclaimer {
       </div>
 
       <h3>Latest lens — applied to RBLX</h3>
-      <p style="font-size: 14px; color: var(--color-text-muted); margin-bottom: 18px;">Five frameworks (selected from the 8 above for direct relevance to RBLX) applied to the current setup. <strong>Frameworks applied — not direct quotes.</strong></p>
+      <p class="smart-money-context">The source links below point to each institution's <strong>public research pages</strong> — not to specific articles about RBLX. The frameworks are <strong>inferred</strong> by applying each firm's known investment thesis (from their published writing) to RBLX's current situation. This is how a sector specialist might think about the stock, not a record of what they've actually said. Always verify before citing. <strong>Frameworks applied — not direct quotes.</strong></p>
 
       <div class="framework-block">
         <div class="framework-firm">Stratechery (Ben Thompson) lens</div>

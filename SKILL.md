@@ -557,7 +557,10 @@ Read: capital structure as tailwind/headwind for thesis.
 ## §11 Smart Money Perspective *[AI-generated — framework inference]*
 [NEW in v2.1]
 
-**Disclaimer up front:** Frameworks of leading sector-focused investors applied. Primary lens: 5 early-stage / private-market specialists (forward signal). Secondary lens: 3 public-market practitioners. **Frameworks applied — not direct quotes.**
+**Disclaimer up front (REQUIRED — render as a styled callout box before the framework blocks):**
+> "The source links below point to each institution's **public research pages** — not to specific articles about [TICKER]. The frameworks are **inferred** by applying each firm's known investment thesis (from their published writing) to [TICKER]'s current situation. This is how a sector specialist might think about the stock, not a record of what they've actually said. Always verify before citing. **Frameworks applied — not direct quotes.**"
+
+Source links in firm cards must point to the institution's actual research/insights page (e.g. `a16z.com/games/`, `bvp.com/atlas`). Do NOT fabricate specific article URLs — if no verified article about this ticker exists, link only to the research index page and note "search for [TICKER] on this site."
 
 ### The 8 firms surveyed for [SECTOR]
 Prose intro: monthly-refreshed cache. Selected for sector authority + public communication.
@@ -664,7 +667,9 @@ Skill expects template at `~/.claude/skills/stock-research/memo-template.html`.
 | `{{CURRENT_PRICE}}` | Yahoo |
 | `{{DRAWDOWN_PCT}}` | computed |
 | `{{52W_HIGH}}`, `{{52W_LOW}}` | Yahoo |
+| `{{PRICE_52W_PERCENTILE}}` | computed: `(price − low) / (high − low) × 100`, display as "Nth %ile 52W" |
 | `{{MARKET_CAP_DISPLAY}}` | Yahoo, formatted |
+| `{{MARKET_CAP_SIZE}}` | computed: Nano <$300M · Micro $300M–$2B · Small $2B–$10B · Mid $10B–$50B · Large $50B–$200B · Mega >$200B |
 | `{{PE_TTM}}` | Yahoo |
 | `{{SETUP_GATE_STATUS}}` | computed |
 | `{{AI_CONVICTION}}` | LLM 1-10 |
@@ -685,8 +690,11 @@ Skill expects template at `~/.claude/skills/stock-research/memo-template.html`.
 - Eyebrow: ticker tag + sector + mode tag (e.g. "LULU · NASDAQ · Consumer Discretionary · RESEARCH MODE")
 - H1: company name (navy, serif, 64px)
 - One-liner sub
-- Horizontal metric bar — 7 cells: Price | Drawdown (red) | Mkt Cap | P/E | Setup Gate (green/red) | Conviction (purple) | Position
-- Setup gate ✗ → red color + warning callout above §1
+- Horizontal metric bar — 7 cells: Price | Drawdown (red) | Mkt Cap | P/E | AI View | Conviction (purple) | Position
+  - Price cell: show `{{CURRENT_PRICE}}` + sub-line `{{PRICE_52W_PERCENTILE}}th %ile 52W` in small muted text
+  - Mkt Cap cell: show `{{MARKET_CAP_DISPLAY}}` + sub-line `{{MARKET_CAP_SIZE}}` in small muted text
+  - `.metric-value` CSS must NOT use `white-space: nowrap` — AI View label can be multi-word ("Mixed signals", "Short-term dip") and must wrap rather than overflow into adjacent cells
+- Below hero bar: one-line data source attribution in 11px mono: "Fundamentals: SEC EDGAR 10-K/10-Q · Market data: Yahoo Finance · Insider: OpenInsider Form 4 · Institutional: Whalewisdom 13-F · News: IR + trade press + earnings call"
 
 **Section structure (each of §0–§14):**
 ```html
