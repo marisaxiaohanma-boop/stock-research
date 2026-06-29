@@ -1,6 +1,7 @@
 ---
 name: stock-research
-description: Generate an investor-grade research memo for any US public stock. Pulls SEC EDGAR filings, Yahoo Finance market data, insider signals, and news — then applies the frameworks of 8 sector-focused institutions via a Smart Money lens. Includes an interactive pre-check (preliminary conviction + data quality check before committing to full research). Outputs HTML + JSON to ~/Documents/stock-research/{ticker}.html. Use when user says "research [ticker]", "refresh [ticker]", "add [ticker] to watchlist". ~$0.28 per full memo, ~7–9 minutes. Pre-check only: ~$0.02, ~30 seconds.
+description: >-
+  Generate an investor-grade research memo for any US public stock. Pulls SEC EDGAR filings, Yahoo Finance market data, insider signals, and news — then applies the frameworks of 8 sector-focused institutions via a Smart Money lens. Includes an interactive pre-check (preliminary conviction + data quality check before committing to full research). Outputs HTML + JSON to ~/Documents/stock-research/{ticker}.html. Use when user says "research [ticker]", "refresh [ticker]", "add [ticker] to watchlist". ~$0.28 per full memo, ~7–9 minutes. Pre-check only ~$0.02, ~30 seconds.
 license: MIT (personal use)
 ---
 
