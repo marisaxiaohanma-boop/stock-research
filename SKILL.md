@@ -487,7 +487,22 @@ User says: `Add LULU to my watchlist`
 
 ## §6 Memo Template — 14 sections
 
-Each section: section chip (number + label) + h2 title + content. Comment button (💬) is added by HTML template's JavaScript on every section, so memo prompt does NOT need to add it.
+**MANDATORY SECTION PATTERN — applies to every section without exception:**
+
+```
+[Section chip + h2 title]
+[AI INSIGHT — 1–3 sentences in plain language answering: "what does this mean for someone considering this stock?"]
+[KEY DATA CARDS — 2–4 visual cards surfacing the most critical numbers that support or contradict the insight]
+[SUPPORTING DETAIL — tables, lists, additional analysis — visually subordinate, for readers who want depth]
+```
+
+Rules:
+- Never open a section with a table or data dump. The insight sentence comes first.
+- Key data cards should be scannable in under 5 seconds. Label + value + 1-line interpretation.
+- Write for a motivated but non-expert investor. No jargon without a one-clause explanation.
+- If data is absent or uncertain, the AI insight should acknowledge it ("data is thin here — here's what we know").
+
+Each section also has a 💬 comment button added by JavaScript — memo prompt does NOT need to add it.
 
 ```markdown
 # {Company Name} ({TICKER})
@@ -511,36 +526,46 @@ Each section: section chip (number + label) + h2 title + content. Comment button
 ---
 
 ## §1 Snapshot
-3-5 bullets: setup, judgment, conviction, position rec, biggest uncertainty.
+**Insight first:** 2-3 sentences: what is this company, what happened to the stock, and what's the one-line take.
+**Key cards (3):** Thesis in one sentence / Biggest risk in one sentence / Our position (Watch / Considering / Avoid + conviction score).
+No bullet lists. Cards only.
 
 ## §2 The Setup *[AI-generated]*
-3-4 paragraphs telling the drawdown story chronologically.
-End with: "The market is pricing this as: [X]"
+**Insight first:** Open with *why the stock is down* in 1-2 sentences — the single clearest causal explanation.
+Then: 2-3 paragraphs walking through the drawdown story chronologically.
+End with: "The market is currently pricing this as: [X]" — one concrete framing of the bear case consensus.
 
 ## §3 Short-Term or Structural? *[AI-generated — central question]*
-### Bull case (Short-term) [4-5 numbered points]
-### Bear case (Structural) [4-5 numbered points]
-### Verdict box: Problem Type / Confidence / Biggest uncertainty
+**Insight first:** State the verdict upfront — "We think this is a [Short-term / Structural / Mixed] problem because [one sentence]."
+Then: Bull case (Short-term) / Bear case (Structural) as two side-by-side cards, 3-4 points each.
+End with: Verdict box — Problem Type / Confidence / Biggest remaining uncertainty.
 
 ## §4 Financial Trajectory
-### Revenue table (5+ periods, with YoY growth and segment breakdown)
-### Margins table (3+ years: Gross / Operating / FCF margin)
-### Balance Sheet: cash, debt, net position, FCF, buybacks
+**Insight first:** 2-3 sentences — is revenue growing or shrinking, are margins improving or compressing, is cash building or depleting? What does the trend mean for this thesis?
+**Key cards (3–4):** Revenue growth (latest QoQ + YoY) / Gross margin trend / FCF generation / Net cash or debt position.
+Each card: metric name + value + one-line interpretation ("margins compressing — GLP-1 pricing pressure").
+**Supporting detail below:** Revenue table (5+ periods) · Margins table (3+ years: Gross / Operating / FCF) · Balance sheet breakdown.
 
 ## §5 Valuation
-### Current vs 5y history table (P/E TTM, Fwd, EV/EBITDA, EV/Sales, FCF Yield)
-### Peers table (3-4 peers)
-### Read: priced for structural decline / cyclical recovery / fair?
+**Insight first:** 1-2 sentences — cheap, fair, or expensive vs. its own history and sector peers? One-line bottom line.
+**Key cards (3):** P/E TTM vs. sector avg vs. 5Y company avg / EV/Revenue or EV/EBITDA vs. nearest peer / FCF yield.
+**Supporting detail below:** Full valuation table (current vs. 5Y history: P/E TTM, Fwd P/E, EV/EBITDA, EV/Sales, FCF Yield) · Peer comparison table (3-4 peers).
 
 ## §6 Business & Moat *[AI-generated]*
-What the company does. Moat components + vulnerabilities. Replicability test.
+**Insight first:** 2-3 sentences — what does this company actually do, and why is it hard to compete with them?
+**Key cards (2–3):** Moat type (network effects / brand / switching cost / cost advantage) / Biggest vulnerability / Replicability rating (Hard / Medium / Easy to replicate).
+**Supporting detail:** Full moat analysis, competitive landscape.
 
 ## §7 Macro & Sector
-Sector dynamics, tailwinds, headwinds, regulatory, currency, tariff exposure.
+**Insight first:** Is the macro environment a tailwind, headwind, or neutral for this name right now?
+**Key cards (2–3):** Most relevant macro factor + direction / Sector-specific dynamic / Regulatory or tariff exposure.
+Supporting detail: full sector dynamics, currency exposure, etc.
 
 ## §8 Capital Structure & Returns
-Debt, buybacks, dividend, M&A, capex.
-Read: capital structure as tailwind/headwind for thesis.
+**Insight first:** Is the balance sheet a source of strength or a risk in this thesis? One sentence.
+**Key cards (3):** Net cash / debt position (and whether it's improving) / Annual FCF vs. debt obligations / Shareholder return (buyback + dividend yield).
+Each card should say whether the metric is a positive or negative signal for the thesis.
+**Supporting detail:** Full debt schedule, buyback history, M&A, capex trajectory.
 
 ## §9 Catalysts (Next 12 Months)
 3-5 dated catalyst blocks with priority (P0/P1/P2):
@@ -561,7 +586,12 @@ Read: capital structure as tailwind/headwind for thesis.
 **Disclaimer up front (REQUIRED — render as a styled callout box before the framework blocks):**
 > "The source links below point to each institution's **public research pages** — not to specific articles about [TICKER]. The frameworks are **inferred** by applying each firm's known investment thesis (from their published writing) to [TICKER]'s current situation. This is how a sector specialist might think about the stock, not a record of what they've actually said. Always verify before citing. **Frameworks applied — not direct quotes.**"
 
-Source links in firm cards must point to the institution's actual research/insights page (e.g. `a16z.com/games/`, `bvp.com/atlas`). Do NOT fabricate specific article URLs — if no verified article about this ticker exists, link only to the research index page and note "search for [TICKER] on this site."
+**Source link rules (STRICT):**
+- Each firm card may include ONE link, labeled **"[Firm name] research page ↗"** — pointing to the firm's research index (e.g. `a16z.com/games/`, `bvp.com/atlas`).
+- Do NOT add "Sources:" chips or multiple links per firm. Do NOT fabricate specific article URLs.
+- If a verified, publicly accessible article about this specific ticker exists (confirmed by Firecrawl), it may be linked with label **"[Article title] ↗"** — but only if it was actually retrieved, not guessed.
+- Framework blocks must NOT have a "Sources:" section. The only links are in the firm cards (the 8 institution cards above the framework blocks), not in the framework analysis itself.
+- The disclaimer callout (see above) must appear prominently before the framework blocks so readers understand the inference nature before engaging with the content.
 
 ### The 8 firms surveyed for [SECTOR]
 Prose intro: monthly-refreshed cache. Selected for sector authority + public communication.
@@ -667,10 +697,13 @@ Skill expects template at `~/.claude/skills/stock-research/memo-template.html`.
 | `{{ONE_LINER}}` | extraction |
 | `{{CURRENT_PRICE}}` | Yahoo |
 | `{{DRAWDOWN_PCT}}` | computed |
+| `{{DRAWDOWN_CONTEXT}}` | computed from drawdown_pct: <30% "Pullback" · 30–50% "Correction" · 50–70% "Deep drawdown" · >70% "Distressed" |
 | `{{52W_HIGH}}`, `{{52W_LOW}}` | Yahoo |
-| `{{PRICE_52W_PERCENTILE}}` | computed: `(price − low) / (high − low) × 100`, display as "Nth %ile 52W" |
+| `{{PRICE_52W_PERCENTILE}}` | computed: `(price − low) / (high − low) × 100`, display as "Nth %ile of 52W range" |
 | `{{MARKET_CAP_DISPLAY}}` | Yahoo, formatted |
 | `{{MARKET_CAP_SIZE}}` | computed: Nano <$300M · Micro $300M–$2B · Small $2B–$10B · Mid $10B–$50B · Large $50B–$200B · Mega >$200B |
+| `{{SECTOR_PE_AVG}}` | Yahoo sector summary or Firecrawl — sector average P/E TTM |
+| `{{COMPANY_5Y_PE_AVG}}` | computed from XBRL + Yahoo historical — company's own 5Y average P/E TTM |
 | `{{PE_TTM}}` | Yahoo |
 | `{{SETUP_GATE_STATUS}}` | computed |
 | `{{AI_CONVICTION}}` | LLM 1-10 |
@@ -688,14 +721,19 @@ Skill expects template at `~/.claude/skills/stock-research/memo-template.html`.
 - Right: `⎘ Copy as Markdown` button + `⌥ Export PDF` button (calls `window.print()`)
 
 **Hero:**
-- Eyebrow: ticker tag + sector + mode tag (e.g. "LULU · NASDAQ · Consumer Discretionary · RESEARCH MODE")
+- Eyebrow: ticker tag + sector (e.g. "RBLX · NASDAQ · Consumer Platform") — no mode tag, no "RESEARCH MODE" label
 - H1: company name (navy, serif, 64px)
 - One-liner sub
-- Horizontal metric bar — 7 cells: Price | Drawdown (red) | Mkt Cap | P/E | AI View | Conviction (purple) | Position
-  - Price cell: show `{{CURRENT_PRICE}}` + sub-line `{{PRICE_52W_PERCENTILE}}th %ile 52W` in small muted text
-  - Mkt Cap cell: show `{{MARKET_CAP_DISPLAY}}` + sub-line `{{MARKET_CAP_SIZE}}` in small muted text
-  - `.metric-value` CSS must NOT use `white-space: nowrap` — AI View label can be multi-word ("Mixed signals", "Short-term dip") and must wrap rather than overflow into adjacent cells
-- Below hero bar: one-line data source attribution in 11px mono: "Fundamentals: SEC EDGAR 10-K/10-Q · Market data: Yahoo Finance · Insider: OpenInsider Form 4 · Institutional: Whalewisdom 13-F · News: IR + trade press + earnings call"
+- Horizontal metric bar — 7 cells: Price | Drawdown | Mkt Cap | P/E | AI View | Conviction | Position
+  - **Price cell:** `{{CURRENT_PRICE}}` + sub-line `{{PRICE_52W_PERCENTILE}}th %ile of 52W range` in small muted text
+  - **Drawdown cell:** `↓ {{DRAWDOWN_PCT}}%` (red) + sub-line `from 52W peak · {{DRAWDOWN_CONTEXT}}` where context = "Pullback" (<30%) / "Correction" (30–50%) / "Deep drawdown" (50–70%) / "Distressed" (>70%)
+  - **Mkt Cap cell:** `{{MARKET_CAP_DISPLAY}}` + sub-line `{{MARKET_CAP_SIZE}}` (Nano / Micro / Small / Mid / Large / Mega)
+  - **P/E cell:** `{{PE_TTM}}` + sub-line `Sector avg {{SECTOR_PE_AVG}}× · 5Y avg {{COMPANY_5Y_PE_AVG}}×` — if P/E is N/A (loss-making), show "N/A (loss)" + sub-line "Sector avg X×"
+  - **AI View cell:** multi-word label allowed — CSS must NOT use `white-space: nowrap`
+  - **Conviction cell:** `{{AI_CONVICTION}}/10`
+  - **Position cell:** `{{AI_POSITION}}`
+- Do NOT add a hero-meta line ("AI-generated sections marked inline", "Research mode", etc.)
+- Do NOT add a data source attribution line below the hero bar — data provenance belongs in §14 Sources, not the hero
 
 **Section structure (each of §0–§14):**
 ```html
@@ -720,7 +758,7 @@ JavaScript on page load:
    - Forces colors with `print-color-adjust: exact` on chips, callouts, firm-cards, framework-blocks
 
 **Footer:**
-- Left: "Marisa Ma" (large) + "Stock Research · Contrarian Memo Series" (small)
+- Left: "Marisa Ma" (large) + "Stock Research · AI Research Series" (small)
 - Right: Export PDF / Copy Markdown / JSON sidecar links
 
 **Special body components — CSS classes:**
