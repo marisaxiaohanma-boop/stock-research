@@ -1,0 +1,2102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HIMS — Stock Research Memo</title>
+<meta name="description" content="Hims &amp; Hers Health, Inc. — DTC consumer-health platform — 2.51M subscribers, $2.35B FY25 revenue (+59% YoY), $318M adj EBITDA — at 60% drawdown after FDA forced withdrawal of compounded GLP-1 pill, Novo lawsuit (since settled), and SEC investigation. Setup gate ✓ MET.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --font-headline: 'Spectral', Georgia, serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', Consolas, monospace;
+
+  --color-bg:          #FAFAF7;
+  --color-surface:     #FFFFFF;
+  --color-text:        #1A1A1A;
+  --color-text-muted:  #6B6B6B;
+  --color-text-soft:   #999999;
+  --color-rule:        #E5E5E0;
+  --color-navy:        #1E293B;
+  --color-navy-deep:   #0F172A;
+  --color-accent:      #7B3AED;
+  --color-accent-deep: #6D28D9;
+  --color-accent-bg:   #F3EDFF;
+  --color-positive:    #15803D;
+  --color-positive-bg: #DCFCE7;
+  --color-warning:     #C1272D;
+  --color-warning-bg:  #FDECEC;
+  --color-bull:        #15803D;
+  --color-bear:        #C1272D;
+
+  --max-width: 1180px;
+  --sidebar-width: 220px;
+  --body-max: 760px;
+
+  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+
+body {
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--color-text);
+  background: var(--color-bg);
+  font-feature-settings: "ss01", "cv11";
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.35;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.035 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes underlineExpand {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+/* ─── Top nav ─── */
+.topnav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background: rgba(250, 250, 247, 0.85);
+  border-bottom: 1px solid var(--color-rule);
+}
+.topnav-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 14px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.brand {
+  font-family: var(--font-headline);
+  font-weight: 600;
+  font-size: 18px;
+  letter-spacing: -0.01em;
+  color: var(--color-navy-deep);
+  text-decoration: none;
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+.brand .accent { color: var(--color-accent); }
+.brand-sub {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--color-text-muted);
+  font-weight: 400;
+}
+.topnav-right { display: flex; align-items: center; gap: 12px; }
+.btn-copy {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  padding: 7px 13px;
+  border: 1px solid var(--color-rule);
+  background: var(--color-surface);
+  color: var(--color-text);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s var(--ease-out);
+}
+.btn-copy:hover { border-color: var(--color-accent); color: var(--color-accent); }
+
+/* ─── Layout ─── */
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 32px;
+  display: grid;
+  grid-template-columns: var(--sidebar-width) 1fr;
+  gap: 64px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ─── Sidebar TOC ─── */
+.toc {
+  position: sticky;
+  top: 90px;
+  align-self: start;
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
+  padding-right: 8px;
+  padding-top: 48px;
+  opacity: 0;
+  animation: fadeUp 0.6s var(--ease-out) 0.3s forwards;
+}
+.toc-label {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-soft);
+  margin-bottom: 18px;
+}
+.toc ol { list-style: none; padding: 0; counter-reset: toc; }
+.toc li { counter-increment: toc; margin-bottom: 6px; }
+.toc a {
+  display: flex;
+  gap: 10px;
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  padding: 4px 0 4px 12px;
+  margin-left: -14px;
+  transition: all 0.25s var(--ease-out);
+  border-left: 2px solid transparent;
+}
+.toc a::before {
+  content: counter(toc, decimal-leading-zero);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-text-soft);
+  font-weight: 500;
+  flex-shrink: 0;
+  padding-top: 2px;
+}
+.toc a:hover { color: var(--color-text); }
+.toc a.active {
+  color: var(--color-accent);
+  border-left-color: var(--color-accent);
+  font-weight: 500;
+}
+.toc a.active::before { color: var(--color-accent); }
+
+main { max-width: var(--body-max); padding-top: 48px; }
+
+/* ─── Hero ─── */
+.hero {
+  margin-bottom: 56px;
+}
+.hero-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-text-soft);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  opacity: 0;
+  animation: fadeUp 0.6s var(--ease-out) 0.05s forwards;
+}
+.hero-eyebrow .ticker-tag {
+  background: var(--color-navy-deep);
+  color: var(--color-bg);
+  padding: 4px 10px;
+  border-radius: 3px;
+  letter-spacing: 0.08em;
+}
+.hero-eyebrow .mode-tag {
+  color: var(--color-accent);
+}
+.hero h1 {
+  font-family: var(--font-headline);
+  font-weight: 500;
+  font-size: 64px;
+  line-height: 1.05;
+  letter-spacing: -0.028em;
+  margin-bottom: 18px;
+  color: var(--color-navy-deep);
+  position: relative;
+  display: inline-block;
+  opacity: 0;
+  animation: fadeUp 0.7s var(--ease-out) 0.15s forwards;
+}
+.hero h1::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  height: 4px;
+  width: 52px;
+  background: var(--color-accent);
+  border-radius: 2px;
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: underlineExpand 0.8s var(--ease-out) 0.7s forwards;
+}
+.hero .one-liner {
+  font-size: 19px;
+  line-height: 1.55;
+  color: var(--color-text-muted);
+  margin-bottom: 36px;
+  max-width: 620px;
+  font-weight: 400;
+  opacity: 0;
+  animation: fadeUp 0.7s var(--ease-out) 0.25s forwards;
+}
+
+/* ─── Horizontal metric bar ─── */
+.metric-bar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0;
+  padding: 22px 0;
+  border-top: 1px solid var(--color-rule);
+  border-bottom: 1px solid var(--color-rule);
+  margin-bottom: 28px;
+  opacity: 0;
+  animation: fadeUp 0.7s var(--ease-out) 0.4s forwards;
+}
+.metric-cell {
+  padding: 0 16px;
+  border-right: 1px solid var(--color-rule);
+  min-width: 0;
+}
+.metric-cell:last-child { border-right: none; }
+.metric-cell:first-child { padding-left: 0; }
+.metric-label {
+  font-family: var(--font-body);
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--color-text-soft);
+  margin-bottom: 8px;
+  white-space: nowrap;
+}
+.metric-value {
+  font-family: var(--font-headline);
+  font-size: 21px;
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  color: var(--color-navy-deep);
+  white-space: nowrap;
+}
+.metric-value.negative { color: var(--color-warning); }
+.metric-value.positive-gate { color: var(--color-positive); }
+.metric-value.warning-gate { color: var(--color-warning); }
+.metric-value.accent-conviction { color: var(--color-accent-deep); }
+/* Convention for gate cells: SETUP_GATE_DISPLAY value should follow the
+   conviction-cell pattern — big icon + .small qualifier, e.g.
+   "✗<span class='small'> Below 50%</span>" or "✓<span class='small'> Eligible</span>".
+   This keeps all 7 cells at uniform 21px main font with consistent visual rhythm. */
+.metric-value .small { font-size: 14px; color: var(--color-text-muted); }
+
+.hero-meta {
+  font-size: 13px;
+  color: var(--color-text-muted);
+  font-family: var(--font-mono);
+  letter-spacing: -0.01em;
+  opacity: 0;
+  animation: fadeUp 0.7s var(--ease-out) 0.55s forwards;
+}
+
+/* ─── Section chip + headers ─── */
+section.memo-section {
+  margin-bottom: 80px;
+  scroll-margin-top: 90px;
+}
+.section-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 14px 7px 12px;
+  background: var(--color-accent);
+  color: #FFFFFF;
+  border-radius: 100px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px rgba(123, 58, 237, 0.18);
+}
+.section-chip-num {
+  font-weight: 700;
+  opacity: 0.85;
+  padding-right: 10px;
+  border-right: 1px solid rgba(255, 255, 255, 0.3);
+}
+.section-chip.diff-chip { background: var(--color-navy-deep); box-shadow: 0 2px 8px rgba(15, 23, 42, 0.18); }
+
+h2.section-title {
+  font-family: var(--font-headline);
+  font-weight: 500;
+  font-size: 36px;
+  line-height: 1.12;
+  letter-spacing: -0.022em;
+  margin-bottom: 28px;
+  color: var(--color-navy-deep);
+}
+h3 {
+  font-family: var(--font-headline);
+  font-weight: 600;
+  font-size: 21px;
+  letter-spacing: -0.01em;
+  margin: 36px 0 14px;
+  color: var(--color-navy);
+}
+h4 {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin: 24px 0 12px;
+}
+
+p { margin-bottom: 18px; color: var(--color-text); }
+
+a {
+  color: var(--color-accent-deep);
+  text-decoration: none;
+  background-image: linear-gradient(var(--color-accent), var(--color-accent));
+  background-position: 0 100%;
+  background-size: 100% 1px;
+  background-repeat: no-repeat;
+  padding-bottom: 1px;
+  transition: color 0.2s ease, background-size 0.3s var(--ease-out);
+}
+a:hover { color: var(--color-accent); background-size: 100% 2px; }
+
+strong { font-weight: 600; color: var(--color-text); }
+em { color: var(--color-text-muted); font-style: italic; }
+
+ul.memo-list { list-style: none; padding: 0; margin-bottom: 24px; }
+ul.memo-list li {
+  padding: 11px 0 11px 22px;
+  position: relative;
+  border-bottom: 1px dashed var(--color-rule);
+  line-height: 1.6;
+}
+ul.memo-list li:last-child { border-bottom: none; }
+ul.memo-list li::before {
+  content: "—";
+  position: absolute;
+  left: 0;
+  color: var(--color-accent);
+  font-family: var(--font-mono);
+  font-weight: 600;
+}
+
+/* ─── Callouts ─── */
+.callout {
+  padding: 14px 18px;
+  margin-bottom: 24px;
+  border-radius: 6px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 13.5px;
+  line-height: 1.5;
+}
+.callout-ai { background: var(--color-accent-bg); border-left: 3px solid var(--color-accent); color: #4a1ea8; }
+.callout-ai .tag { font-family: var(--font-mono); font-weight: 700; font-size: 11px; letter-spacing: 0.05em; color: var(--color-accent); flex-shrink: 0; padding-top: 2px; }
+.callout-warning { background: var(--color-warning-bg); border-left: 3px solid var(--color-warning); color: #8a1f23; }
+.callout-warning .tag { font-family: var(--font-mono); font-weight: 700; font-size: 11px; letter-spacing: 0.05em; color: var(--color-warning); flex-shrink: 0; padding-top: 2px; }
+
+/* ─── Verdict box (§3 main result) ─── */
+.verdict-box {
+  background: var(--color-surface);
+  border: 1.5px solid var(--color-accent);
+  border-radius: 8px;
+  padding: 22px 26px;
+  margin: 24px 0;
+}
+.verdict-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-soft);
+  margin-bottom: 8px;
+}
+.verdict-main {
+  font-family: var(--font-headline);
+  font-size: 26px;
+  font-weight: 600;
+  color: var(--color-navy-deep);
+  margin-bottom: 12px;
+  letter-spacing: -0.01em;
+}
+.verdict-confidence {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 12px;
+  background: var(--color-accent-bg);
+  color: var(--color-accent-deep);
+  letter-spacing: 0.05em;
+  margin-bottom: 12px;
+}
+.verdict-uncertainty {
+  font-size: 14px;
+  color: var(--color-text-muted);
+  border-top: 1px dashed var(--color-rule);
+  padding-top: 12px;
+  margin-top: 8px;
+}
+
+/* ─── Bull / Bear two-column grid ─── */
+.bullbear-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 24px 0;
+}
+.case-card {
+  padding: 22px;
+  border-radius: 8px;
+  background: var(--color-surface);
+  border-top: 3px solid;
+}
+.case-card.bull { border-top-color: var(--color-bull); }
+.case-card.bear { border-top-color: var(--color-bear); }
+.case-card-label {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.case-card.bull .case-card-label { color: var(--color-bull); }
+.case-card.bear .case-card-label { color: var(--color-bear); }
+.case-card ol { padding-left: 18px; font-size: 14px; line-height: 1.55; }
+.case-card ol li { margin-bottom: 10px; }
+.case-card ol li:last-child { margin-bottom: 0; }
+
+/* ─── Financial trajectory tables ─── */
+table.trajectory {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0 28px;
+  font-size: 13.5px;
+}
+table.trajectory thead th {
+  text-align: left;
+  padding: 10px 12px 10px 0;
+  border-bottom: 2px solid var(--color-text);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+table.trajectory thead th.num { text-align: right; padding-right: 0; }
+table.trajectory tbody tr { border-bottom: 1px solid var(--color-rule); }
+table.trajectory tbody tr:hover { background: rgba(123, 58, 237, 0.04); }
+table.trajectory td { padding: 11px 12px 11px 0; vertical-align: top; }
+table.trajectory td.period { font-weight: 600; }
+table.trajectory td.num {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+  padding-right: 0;
+}
+table.trajectory td.delta-pos { color: var(--color-positive); }
+table.trajectory td.delta-neg { color: var(--color-warning); }
+
+/* ─── Valuation comp table ─── */
+table.valuation {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0 24px;
+  font-size: 13.5px;
+}
+table.valuation thead th {
+  text-align: left;
+  padding: 10px 14px 10px 12px;
+  border-bottom: 2px solid var(--color-text);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  background: var(--color-surface);
+}
+table.valuation thead th.num { text-align: right; }
+table.valuation thead th.read { text-align: left; }
+table.valuation tbody tr { border-bottom: 1px solid var(--color-rule); }
+table.valuation td { padding: 11px 14px 11px 12px; vertical-align: middle; }
+table.valuation td.metric { font-weight: 600; }
+table.valuation td.num {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+table.valuation td.read.below {
+  color: var(--color-positive);
+  font-size: 12.5px;
+  font-style: italic;
+}
+table.valuation td.read.above {
+  color: var(--color-warning);
+  font-size: 12.5px;
+  font-style: italic;
+}
+
+/* ─── Trading signals table ─── */
+table.signals {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0 16px;
+  font-size: 13.5px;
+}
+table.signals thead th {
+  text-align: left;
+  padding: 10px 14px 10px 12px;
+  border-bottom: 2px solid var(--color-text);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+table.signals thead th.tiebreaker { text-align: center; }
+table.signals tbody tr { border-bottom: 1px solid var(--color-rule); }
+table.signals td { padding: 11px 14px 11px 12px; vertical-align: middle; }
+table.signals td.signal { font-weight: 600; }
+table.signals td.tiebreaker {
+  text-align: center;
+  font-family: var(--font-mono);
+  font-weight: 600;
+}
+table.signals td.tiebreaker.pos { color: var(--color-positive); }
+table.signals td.tiebreaker.neg { color: var(--color-warning); }
+table.signals td.tiebreaker.neutral { color: var(--color-text-soft); }
+.aggregate-read {
+  background: var(--color-surface);
+  border: 1px solid var(--color-rule);
+  border-left: 3px solid var(--color-accent);
+  padding: 12px 16px;
+  border-radius: 4px;
+  margin: 12px 0 8px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* ─── Entry / Exit plan ─── */
+.entry-exit-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 20px 0 24px;
+}
+.plan-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-rule);
+  border-radius: 8px;
+  padding: 22px 24px;
+}
+.plan-card-label {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: 16px;
+}
+.batch-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 10px 0;
+  border-bottom: 1px dashed var(--color-rule);
+  font-size: 14px;
+}
+.batch-line:last-child { border-bottom: none; }
+.batch-label { color: var(--color-text-muted); }
+.batch-pct {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  color: var(--color-navy-deep);
+}
+.trigger-list { list-style: none; padding: 0; margin: 8px 0 0; font-size: 13.5px; }
+.trigger-list li {
+  padding: 8px 0 8px 22px;
+  position: relative;
+  line-height: 1.5;
+  border-bottom: 1px dashed var(--color-rule);
+}
+.trigger-list li:last-child { border-bottom: none; }
+.trigger-list.add-triggers li::before {
+  content: "+";
+  position: absolute;
+  left: 0;
+  color: var(--color-positive);
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 14px;
+}
+.trigger-list.exit-triggers li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: var(--color-warning);
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 14px;
+}
+
+/* ─── Catalyst blocks ─── */
+.catalyst-block {
+  background: var(--color-surface);
+  border: 1px solid var(--color-rule);
+  border-left: 3px solid var(--color-accent);
+  border-radius: 6px;
+  padding: 16px 18px;
+  margin-bottom: 12px;
+}
+.catalyst-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 6px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.catalyst-title {
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--color-navy);
+}
+.catalyst-date {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+.catalyst-body {
+  font-size: 13.5px;
+  color: var(--color-text-muted);
+  line-height: 1.55;
+}
+.catalyst-priority {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 3px;
+  letter-spacing: 0.05em;
+  margin-left: 6px;
+  vertical-align: 2px;
+}
+.catalyst-priority.p0 { background: var(--color-warning-bg); color: var(--color-warning); }
+.catalyst-priority.p1 { background: var(--color-accent-bg); color: var(--color-accent-deep); }
+.catalyst-priority.p2 { background: #F0F0EC; color: var(--color-text-muted); }
+
+/* ─── Sources grid ─── */
+.sources-grid { display: grid; gap: 12px; margin-top: 12px; }
+.source-group {
+  padding: 18px 22px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-rule);
+  border-radius: 6px;
+}
+.source-group h4 {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+.source-group ul { list-style: none; padding: 0; }
+.source-group ul li { padding: 4px 0; font-size: 13.5px; line-height: 1.5; }
+.source-group ul li .pub {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-text-soft);
+  margin-right: 6px;
+}
+
+/* ─── Footer ─── */
+footer {
+  max-width: var(--max-width);
+  margin: 64px auto 0;
+  padding: 32px;
+  border-top: 1px solid var(--color-rule);
+  font-size: 13px;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  position: relative;
+  z-index: 1;
+}
+footer .footer-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+footer .made-by { font-family: var(--font-headline); font-size: 16px; color: var(--color-navy-deep); font-weight: 500; margin-bottom: 6px; }
+footer .made-by .accent { color: var(--color-accent); }
+footer .links { display: flex; gap: 20px; flex-wrap: wrap; }
+footer a { color: var(--color-text-muted); background: none; padding-bottom: 0; }
+footer a:hover { color: var(--color-accent); }
+footer .disclaimer {
+  font-size: 11px;
+  color: var(--color-text-soft);
+  font-style: italic;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px dashed var(--color-rule);
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 1024px) {
+  .container { grid-template-columns: 1fr; gap: 32px; padding: 0 24px; }
+  .toc { display: none; }
+  .hero h1 { font-size: 50px; }
+  .metric-bar { grid-template-columns: repeat(3, 1fr); gap: 12px 16px; padding: 16px 0; }
+  .metric-cell { padding: 8px 12px 8px 0; border-right: none; border-bottom: 1px solid var(--color-rule); }
+  .metric-cell:nth-last-child(-n+3) { border-bottom: none; }
+  .bullbear-grid, .entry-exit-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .hero h1 { font-size: 38px; }
+  .hero .one-liner { font-size: 17px; }
+  h2.section-title { font-size: 28px; }
+  .metric-bar { grid-template-columns: repeat(2, 1fr); }
+  .metric-cell:nth-last-child(-n+2) { border-bottom: none; }
+}
+
+/* ─── Section chip + comment button row ─── */
+.section-with-comment-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+.section-with-comment-btn .section-chip { margin-bottom: 0; }
+.btn-comment {
+  background: transparent;
+  border: 1px solid var(--color-rule);
+  color: var(--color-text-muted);
+  font-size: 12px;
+  padding: 5px 11px;
+  border-radius: 100px;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+.btn-comment:hover { border-color: var(--color-accent); color: var(--color-accent); }
+.btn-comment.has-comment {
+  background: var(--color-accent-bg);
+  border-color: var(--color-accent);
+  color: var(--color-accent-deep);
+}
+.btn-comment .icon { font-size: 13px; }
+
+.comment-panel {
+  background: #FFFEF7;
+  border: 1px solid #F0E5C8;
+  border-left: 3px solid #C28F00;
+  border-radius: 6px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+  display: none;
+}
+.comment-panel.open { display: block; }
+.comment-panel-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #8A6F00;
+  margin-bottom: 10px;
+}
+.comment-panel textarea {
+  width: 100%;
+  min-height: 80px;
+  border: 1px solid #E0D6B5;
+  border-radius: 4px;
+  padding: 10px 12px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--color-text);
+  background: #FFFFFF;
+  resize: vertical;
+  outline: none;
+  box-sizing: border-box;
+}
+.comment-panel textarea:focus { border-color: #C28F00; }
+.comment-panel-meta {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: #8A6F00;
+  margin-top: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.comment-panel-meta button {
+  background: transparent;
+  border: none;
+  color: #8A6F00;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 12px;
+  text-decoration: underline;
+  padding: 0;
+}
+
+/* ─── Smart Money section ─── */
+.firms-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin: 18px 0 30px;
+}
+.firm-card {
+  padding: 18px 20px;
+  border-radius: 8px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-rule);
+  border-top: 3px solid var(--color-text-soft);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+.firm-card:hover { transform: translateY(-2px); }
+.firm-card.primary { border-top-color: var(--color-accent); }
+.firm-card.secondary { border-top-color: var(--color-text-muted); }
+.firm-tier {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--color-text-soft);
+  margin-bottom: 8px;
+}
+.firm-card.primary .firm-tier { color: var(--color-accent-deep); }
+.firm-name {
+  font-family: var(--font-headline);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--color-navy-deep);
+  margin-bottom: 4px;
+  letter-spacing: -0.01em;
+}
+.firm-meta {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-text-muted);
+  margin-bottom: 12px;
+}
+.firm-thesis {
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--color-text);
+  margin-bottom: 10px;
+}
+.firm-relevance {
+  font-size: 11px;
+  color: var(--color-text-soft);
+  font-style: italic;
+}
+
+.framework-block {
+  background: var(--color-surface);
+  border: 1px solid var(--color-rule);
+  border-left: 3px solid var(--color-accent);
+  border-radius: 6px;
+  padding: 18px 22px;
+  margin-bottom: 14px;
+}
+.framework-firm {
+  font-family: var(--font-headline);
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--color-navy-deep);
+  margin-bottom: 10px;
+  letter-spacing: -0.01em;
+}
+.framework-text {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--color-text);
+  margin-bottom: 10px;
+}
+.framework-disclaimer {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--color-text-soft);
+  font-style: italic;
+  letter-spacing: 0.04em;
+  border-top: 1px dashed var(--color-rule);
+  padding-top: 8px;
+}
+
+.synthesis-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 18px 0;
+}
+.synthesis-card {
+  padding: 20px 22px;
+  border-radius: 8px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-rule);
+}
+.synthesis-card.agree { border-top: 3px solid var(--color-positive); }
+.synthesis-card.diverge { border-top: 3px solid var(--color-warning); }
+.synthesis-label {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.synthesis-card.agree .synthesis-label { color: var(--color-positive); }
+.synthesis-card.diverge .synthesis-label { color: var(--color-warning); }
+
+@media (max-width: 1024px) {
+  .firms-grid, .synthesis-grid { grid-template-columns: 1fr; }
+}
+
+/* ─── Fundamental principles list ─── */
+.principles-intro {
+  font-size: 14px;
+  color: var(--color-text-muted);
+  margin-bottom: 18px;
+  line-height: 1.6;
+}
+.principles-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 18px 0 36px;
+}
+.principle-block {
+  background: var(--color-surface);
+  border: 1px solid var(--color-rule);
+  border-radius: 8px;
+  padding: 18px 22px;
+  border-left: 3px solid var(--color-accent);
+  transition: transform 0.15s ease, border-color 0.2s ease;
+}
+.principle-block:hover { transform: translateX(2px); }
+.principle-name {
+  font-family: var(--font-headline);
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--color-navy-deep);
+  margin-bottom: 8px;
+  letter-spacing: -0.01em;
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+.principle-num {
+  font-family: var(--font-mono);
+  color: var(--color-accent);
+  font-weight: 700;
+  font-size: 13px;
+  flex-shrink: 0;
+}
+.principle-body {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--color-text);
+  margin-bottom: 12px;
+}
+.principle-firms {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+.principle-firms .chip-label {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--color-text-soft);
+  margin-right: 4px;
+}
+
+/* ─── Firm chip (clickable source link) ─── */
+.firm-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  background: var(--color-bg);
+  border: 1px solid var(--color-rule);
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--color-text);
+  text-decoration: none;
+  background-image: none;
+  padding-bottom: 4px;
+  transition: all 0.2s ease;
+  font-family: var(--font-body);
+}
+.firm-chip:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent-deep);
+  background-color: var(--color-accent-bg);
+}
+.firm-chip .src-icon {
+  font-size: 10px;
+  opacity: 0.6;
+  font-weight: 700;
+}
+.firm-chip:hover .src-icon { opacity: 1; }
+
+/* ─── Source link icon (inline in framework text) ─── */
+.src-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  margin-left: 3px;
+  border-radius: 50%;
+  background: var(--color-accent-bg);
+  color: var(--color-accent-deep);
+  text-decoration: none;
+  background-image: none;
+  font-size: 10px;
+  font-weight: 700;
+  vertical-align: 2px;
+  padding-bottom: 0;
+  transition: all 0.2s ease;
+}
+.src-link:hover {
+  background: var(--color-accent);
+  color: white;
+}
+
+/* ─── Framework block additions: meta + sources row ─── */
+.framework-firm-meta {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-text-muted);
+  margin: -4px 0 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.framework-firm-meta .dot { color: var(--color-text-soft); }
+.framework-sources {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px dashed var(--color-rule);
+}
+.framework-sources .chip-label {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--color-text-soft);
+  margin-right: 4px;
+}
+
+/* ─── Print: include comments + smart money cards ─── */
+@media print {
+  .topnav, .toc { display: none !important; }
+  body { background: white !important; font-size: 11pt; line-height: 1.5; }
+  body::before { display: none !important; }
+  .container { display: block !important; padding: 0 !important; max-width: 100% !important; }
+  main { max-width: 100% !important; padding-top: 0 !important; }
+  .hero h1, .hero .one-liner, .metric-bar { opacity: 1 !important; transform: none !important; animation: none !important; }
+  .section-chip {
+    background: #7B3AED !important;
+    color: white !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  /* Allow long sections (esp §11 Smart Money) to break across pages,
+     while keeping inner cards/blocks intact via per-element page-break-inside. */
+  section.memo-section { break-inside: auto; }
+  .btn-comment, .btn-copy { display: none !important; }
+  .comment-panel { display: block !important; }
+  .comment-panel, .firm-card, .framework-block, .synthesis-card,
+  .verdict-box, .case-card, .plan-card, .callout {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  /* Bug 1 + Bug 2 fix: disable grid layouts in print so cards can flow
+     and respect page-break-inside. Grid containers don't honor page breaks
+     reliably, leading to blank pages or overlapping cards. */
+  .entry-exit-grid,
+  .firms-grid,
+  .synthesis-grid,
+  .bullbear-grid {
+    display: block !important;
+  }
+  .plan-card { margin-bottom: 16px; }
+  .firm-card { margin-bottom: 12px; }
+  .framework-block { margin-bottom: 14px; }
+  .synthesis-card { margin-bottom: 14px; }
+  .case-card { margin-bottom: 16px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="topnav-inner">
+    <a href="#" class="brand">Marisa Ma <span class="brand-sub">/ Stock Research</span></a>
+    <div class="topnav-right">
+      <button class="btn-copy" onclick="copyMarkdown()">⎘ Copy as Markdown</button>
+      <button class="btn-copy" onclick="window.print()">⌥ Export PDF</button>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+
+  <aside class="toc">
+    <div class="toc-label">Contents</div>
+    <ol>
+      <li><a href="#section-1">Snapshot</a></li>
+      <li><a href="#section-2">The Setup</a></li>
+      <li><a href="#section-3">Short-term or Structural?</a></li>
+      <li><a href="#section-4">Financial Trajectory</a></li>
+      <li><a href="#section-5">Valuation</a></li>
+      <li><a href="#section-6">Business &amp; Moat</a></li>
+      <li><a href="#section-7">Macro &amp; Sector</a></li>
+      <li><a href="#section-8">Capital Structure</a></li>
+      <li><a href="#section-9">Catalysts</a></li>
+      <li><a href="#section-10">Trading Signals</a></li>
+      <li><a href="#section-11">Smart Money Perspective</a></li>
+      <li><a href="#section-12">Entry &amp; Exit Plan</a></li>
+      <li><a href="#section-13">Bull / Bear Case</a></li>
+      <li><a href="#section-14">Sources</a></li>
+    </ol>
+  </aside>
+
+  <main>
+
+    <header class="hero">
+      <div class="hero-eyebrow">
+        <span class="ticker-tag">HIMS</span>
+        <span>NYSE · Healthcare/Services · Telehealth/DTC Pharmacy</span>
+        <span class="mode-tag">· RESEARCH MODE</span>
+      </div>
+      <h1>Hims &amp; Hers Health, Inc.</h1>
+      <p class="one-liner">DTC consumer-health platform — 2.51M subscribers, $2.35B FY25 revenue (+59% YoY), $318M adj EBITDA — at 60% drawdown after FDA forced withdrawal of compounded GLP-1 pill, Novo lawsuit (since settled), and SEC investigation. Setup gate ✓ MET.</p>
+
+      <!-- Horizontal metric bar — 7 cells -->
+      <div class="metric-bar">
+        <div class="metric-cell">
+          <div class="metric-label">Price</div>
+          <div class="metric-value">$27.88</div>
+        </div>
+        <div class="metric-cell">
+          <div class="metric-label">Drawdown</div>
+          <div class="metric-value negative">−60.4%</div>
+        </div>
+        <div class="metric-cell">
+          <div class="metric-label">Mkt Cap</div>
+          <div class="metric-value">$6.35B</div>
+        </div>
+        <div class="metric-cell">
+          <div class="metric-label">P/E TTM</div>
+          <div class="metric-value">54.7×</div>
+        </div>
+        <div class="metric-cell">
+          <div class="metric-label">AI View</div>
+          <div class="metric-value accent-conviction">Mixed signals</div>
+        </div>
+        <div class="metric-cell">
+          <div class="metric-label">Conviction</div>
+          <div class="metric-value accent-conviction">6<span class="small">/10</span></div>
+        </div>
+        <div class="metric-cell">
+          <div class="metric-label">Position</div>
+          <div class="metric-value">Considering</div>
+        </div>
+      </div>
+
+      <p class="hero-meta">Generated April 28, 2026  ·  14-min read  ·  AI-generated sections marked inline  ·  Research mode (initial memo)</p>
+    </header>
+
+    <!-- Setup gate warning callout (only when gate ✗ — empty string when ✓) -->
+    
+
+    
+    <section class="memo-section" id="section-1">
+      <div class="section-chip"><span class="section-chip-num">01</span><span>SNAPSHOT</span></div>
+      <h2 class="section-title">Snapshot</h2>
+
+      <ul class="memo-list">
+        <li><strong>The setup.</strong> Drawdown of 60.4% from 52W high ($70.43 → $27.88), still 2× off the Feb 24 capitulation low of $13.74. Setup gate ✓ MET. Sentiment Cool, transitioning to Cautiously Constructive — JPMorgan initiated Overweight (Apr 24), BofA raised PT $21 → $32 on the Lilly distribution deal (Apr 27), Barclays at $29 OW. Median Street PT $23.12 still sits below current; consensus is hold-skewed.</li>
+        <li><strong>The judgment.</strong> Short-term, medium confidence. The drawdown is driven by an identifiable, partly-resolved cluster: (a) FDA/DOJ enforcement on compounded semaglutide (Feb 6, 2026) and forced withdrawal of HIMS' $49 oral pill 48 hours after launch; (b) Novo Nordisk lawsuit Feb 10 — DROPPED Mar 9 with HIMS pivoting to NovoCare-parity branded distribution; (c) open SEC investigation into prior GLP-1 disclosures (10-K disclosure, no Wells notice as of Apr 2026); (d) Q1 2026 explicit ~$65M shipping-cadence headwind. Underlying business: 2.51M subs (+13% YoY), $83 monthly ARPU (+28% YoY), FY25 revenue $2.35B (+59%), adj EBITDA $318M (+80%). Mgmt says only a "small minority" of subs use compounded GLP-1.</li>
+        <li><strong>The number.</strong> AI Conviction <strong>6/10</strong>. Held back from 7+ by: SEC investigation unresolved (open-ended tail); FCF compression FY24 → FY25 ($198M → $57M, −71%) from capex absorption ($53M → $243M); insider sell cluster <em>zero</em> open-market buys in 6 months despite −60% drawdown (CEO Dudum sold $20M+ Sep–Oct 2025 before the crash); Q4 gross margin compressed −500bps to 72%.</li>
+        <li><strong>Position recommendation.</strong> Considering. First batch <strong>30%</strong> (low end of 30–40% range). Two binary risks within 14 days: (a) Q1 2026 print on May 11 (mgmt has already disclosed the $65M shipping-cadence headwind and Q1 EBITDA guide $35–55M = 6–9% margin); (b) any SEC investigation update.</li>
+        <li><strong>The most powerful signal.</strong> Citadel (Ken Griffin) built a 2.0M-share position from ~150K (+1,158% Q4) — quant-driven HF taking a meaningful long during the drawdown. Goldman +12%, BlackRock +5.7%, UBS +59%. Casdin Capital (healthcare specialist) added +67%. Counterweight: <strong>JPMorgan exited −79% (−15M shares)</strong> and Farallon −68%. Short interest <strong>37.85% of float</strong> = squeeze fuel either direction.</li>
+        <li><strong>Biggest uncertainty.</strong> Whether HIMS is a regulatory-impaired single-product story whose 2024 growth driver (compounded GLP-1) is gone, or a durable consumer-health platform that survived the pivot. FY26 guide of $2.7–2.9B "assumes ongoing ability to provide access to compounded semaglutide" — the load-bearing assumption beneath the bull case is precisely the assumption regulators are most likely to break.</li>
+      </ul>
+    </section>
+
+    <section class="memo-section" id="section-2">
+      <div class="section-chip"><span class="section-chip-num">02</span><span>THE SETUP</span></div>
+      <h2 class="section-title">What happened — the drawdown story</h2>
+
+      <div class="callout callout-ai">
+        <span class="tag">AI</span>
+        <div>This section reconstructs the drawdown narrative chronologically. It is not the author's view — that's §3.</div>
+      </div>
+
+      <p>HIMS peaked at <strong>$70.43 on July 31, 2025</strong>, riding three concurrent tailwinds: (1) the multi-telehealth GLP-1 routing partnership (announced April 2025, originally including Wegovy access via Novo Nordisk's NovoCare channel); (2) viral execution on weight-loss positioning, with $49 compounded semaglutide subscriptions becoming a high-growth product line; (3) sub-base reaching ~2.4M and ARPU stepping up dramatically as personalized treatments (multi-product cohorts) outweighed simple sexual-health DTC. The bull narrative was: HIMS is the consumer health platform that finally figured out brand + repeat purchase + cash compounding.</p>
+
+      <p>The unwind began in <strong>June 2025</strong>, when Novo Nordisk terminated HIMS from its NovoCare channel, accusing the company of "deceptive" compounded marketing — a shot across the bow that, with hindsight, presaged the regulatory cascade. Stock decoupled from operating fundamentals (which were still strong: Q3 2025 reported $599M revenue, +49% YoY, in early November). Then in February 2026, four catalysts compressed:</p>
+
+      <ul class="memo-list">
+        <li><strong>Feb 6:</strong> FDA announced enforcement action against HIMS' newly-launched $49 oral semaglutide pill and signaled it would restrict GLP-1 ingredients in compounded preparations. HHS general counsel referred HIMS to DOJ. Stock −14% AH.</li>
+        <li><strong>Feb 8:</strong> HIMS withdrew the oral pill 48 hours after launch — an unprecedented operational reversal that exposed how much of the 2025 narrative was built on the compounded-GLP-1 product line.</li>
+        <li><strong>Feb 10:</strong> Novo filed its threatened patent-infringement lawsuit, framing HIMS as a willful infringer.</li>
+        <li><strong>Feb 19:</strong> HIMS announced an acquisition of Eucalyptus (Australian/UK telehealth, brands Pilot + Juniper) for up to $1.15B — bold international diversification but timing read as desperation by some.</li>
+        <li><strong>Feb 23–24:</strong> Q4 earnings beat (FY25 rev $2.35B / adj EBITDA $318M) but Q1 2026 guide was light, and the 10-K disclosed an open SEC investigation into prior GLP-1 disclosures. Stock fell another 5% over two days.</li>
+      </ul>
+
+      <p>The capitulation low of <strong>$13.74</strong> printed on Feb 24, 2026 — a peak-to-trough drawdown of 80.5%. Then on <strong>March 9, 2026</strong>, the script flipped: Novo dropped the lawsuit and HIMS agreed to (a) sell branded Wegovy/Ozempic at NovoCare self-pay parity, (b) cease mass-marketing of compounded GLP-1 products, (c) transition existing compound subscribers to FDA-approved Novo product when clinically appropriate. FDA Commissioner Makary publicly endorsed the deal. Stock rallied 40–48% over the following week. Barclays raised its PT to $29 (Mar 11). JPMorgan initiated Overweight (Apr 24). On April 27, BofA pivoted from a $21 target to $32 after HIMS signed a separate Eli Lilly distribution-style deal — meaningfully restoring routing legitimacy with both major GLP-1 manufacturers.</p>
+
+      <p style="border-top: 1px dashed var(--color-rule); padding-top: 16px; margin-top: 24px;"><strong>The market is pricing this as:</strong> A growth-stage telehealth platform whose 2024 revenue acceleration was disproportionately driven by a regulated pharmaceutical category that is now being structurally rebuilt under FDA enforcement — with an open SEC investigation overhang and uncertain Q1 2026 execution. EV/Revenue 3.08× is below most public consumer-health peers; EV/Adj-EBITDA 22.8× (FY25) reflects skepticism that 2025's $318M EBITDA print is repeatable now that the high-margin compounded-GLP-1 product is gone. The drawdown is severe enough — and the operating fundamentals robust enough (FY26 EBITDA guide midpoint $338M, only ~6% above FY25) — that the contrarian framework is forced to engage.</p>
+    </section>
+
+    <section class="memo-section" id="section-3">
+      <div class="section-chip"><span class="section-chip-num">03</span><span>CORE QUESTION</span></div>
+      <h2 class="section-title">Short-term or structural?</h2>
+
+      <div class="callout callout-ai">
+        <span class="tag">AI</span>
+        <div>The core analytical question. Every memo's value is downstream of this judgment.</div>
+      </div>
+
+      <div class="bullbear-grid">
+        <div class="case-card bull">
+          <div class="case-card-label">🐂 Short-term case</div>
+          <ol>
+            <li><strong>Existential overhang largely resolved.</strong> Novo dropped the lawsuit (Mar 9). FDA Commissioner publicly endorsed the deal. HIMS now distributes Wegovy/Ozempic at NovoCare self-pay parity AND has a separate Lilly distribution arrangement (per Apr 27 BofA note). The two largest GLP-1 manufacturers route through HIMS — a meaningful upgrade vs. the "outlaw compounder" framing of February.</li>
+            <li><strong>Subscriber base diversified.</strong> 2.51M subs (+13% YoY) with monthly revenue per subscriber $83 (+28% YoY). Mgmt: only "a small minority" use compounded GLP-1; ~65% of subs are on personalized treatments (multi-product cohorts that drive ARPU). The platform survived a forced shutdown of its 2024 growth engine and still grew subscribers and ARPU.</li>
+            <li><strong>FY25 adj EBITDA $318M (+80% YoY) sets a meaningful floor.</strong> FY26 guide midpoint $338M = ~6% growth — deceleration is real but the asset is now a $300M+ EBITDA business at $6.35B EV (22.8× EV/EBITDA). Long-term 2030 targets ($6.5B revenue, $1.3B EBITDA) reframe the question from "is HIMS broken?" to "what's a reasonable multiple for a growing consumer-health platform?"</li>
+            <li><strong>Eucalyptus expands TAM globally.</strong> $1.15B (up to) buys scaled telehealth in Australia, UK, Germany, Japan, Canada — pivots HIMS from US-only DTC to multi-region consumer-health platform. Excluded from FY26 guide; closes mid-2026; provides organic upside if guidance is conservative.</li>
+            <li><strong>Citadel built 2.0M-share long position.</strong> Quant-driven hedge fund putting capital behind the trade during the drawdown. Goldman +12%, BlackRock +5.7%, UBS +59%, Casdin (healthcare specialist) +67%. Smart institutional flow in Q4 was net-bullish despite headline noise.</li>
+            <li><strong>Recovery from Feb 24 low has been orderly, not euphoric.</strong> Stock has doubled from $13.74 → $27.88 over 9 weeks without a panic-bid signature; the rally has been driven by sequential good news (Novo settle, JPM init, Lilly deal) — characteristic of a thesis-rebuilding, not a memestock squeeze.</li>
+          </ol>
+        </div>
+        <div class="case-card bear">
+          <div class="case-card-label">🐻 Structural case</div>
+          <ol>
+            <li><strong>SEC investigation is an open tail.</strong> The 10-K disclosed an SEC investigation into prior GLP-1 disclosures. No Wells notice yet, but if it advances, the worst-case is restatement of compounded-GLP-1-era revenue and disgorgement. Magnitude unquantified by management.</li>
+            <li><strong>FCF compressed −71% YoY.</strong> FY24 FCF $198M → FY25 FCF $57M. Capex jumped from $53M to $243M (pharmacy automation + facility footprint expanding to >1M sq ft). Q4 FCF actually went negative. The "cash-compounding consumer health platform" thesis depends on capex normalizing — and management said FY26 capex stays elevated.</li>
+            <li><strong>Q4 gross margin compressed −500 bps to 72%.</strong> Branded-GLP-1 distribution (per the Novo settlement) is structurally lower-margin than compounded — HIMS becomes a distributor for a Novo product rather than the manufacturer of its own. The mix shift will compress margins for FY26 and possibly beyond.</li>
+            <li><strong>Insider sell cluster is uniform.</strong> ~$26–28M total officer sales in last 6 months (CFO, COO, CMO, GC all selling at $19–$30 in March-April near lows). Zero open-market buys in 6 months despite −60% drawdown. CEO Dudum sold $20M+ in Sep–Oct 2025 BEFORE the crash (raising 10b5-1 timing scrutiny — though plans were almost certainly filed earlier). The signal is broad-based officer pessimism on "fair value" relative to current price.</li>
+            <li><strong>Subscriber growth has decelerated to +13% YoY (Q4) from +50%+ in 2024.</strong> Net adds in Q4 were only ~40K (2.471M → 2.511M). If GLP-1-related churn from the pivot is masking weaker organic adds, growth could decelerate further before reaccelerating.</li>
+            <li><strong>FY26 guide explicitly assumes "ongoing ability to provide access to compounded semaglutide."</strong> The bull case rests on a regulatory accommodation that the FDA has already moved against. If FDA tightens further, FY26 guide breaks. This is the load-bearing assumption.</li>
+            <li><strong>Short interest 37.85% of float is partly informed positioning.</strong> A 38% short ratio is unusually high for a $6B+ market cap; it reflects sustained institutional skepticism. Some shorts will cover on good news; some are positioning for the SEC outcome.</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="verdict-box">
+        <div class="verdict-label">Verdict</div>
+        <div class="verdict-main">Mixed (leaning Short-term) · 12–18 month recovery window</div>
+        <span class="verdict-confidence">Confidence: Medium</span>
+        <p style="font-size: 14px; line-height: 1.6; margin-bottom: 0;">The Novo settlement (Mar 9), Lilly distribution deal (Apr 27), and JPMorgan initiation (Apr 24) have removed the existential overhang and meaningfully repaired the routing legitimacy concern. The platform — measured by subscribers, ARPU, EBITDA, gross-margin-ex-mix — survived a forced shutdown of its 2024 growth engine. The drawdown is opportunity. <em>However</em>, the SEC investigation is a real open tail, FCF compressed −71% YoY, gross margin compression is structural (branded distribution is lower-margin), and FY26 guide explicitly hangs on continued compounded-GLP-1 access. This is not the clean RBLX-style "operations are accelerating, market is wrong" setup; it is a "regulatory damage repair-job that will likely succeed but with material uncertainty." 6/10 conviction reflects that nuance.</p>
+        <div class="verdict-uncertainty">
+          <strong>Biggest uncertainty:</strong> Whether the SEC investigation results in (a) closed without action, (b) civil monetary penalty without restatement, or (c) restatement / disgorgement of compounded-GLP-1-era revenue. Path (a) is base case; path (c) would flip the thesis to Structural.
+        </div>
+      </div>
+    </section>
+
+    <section class="memo-section" id="section-4">
+      <div class="section-chip"><span class="section-chip-num">04</span><span>FINANCIAL TRAJECTORY</span></div>
+      <h2 class="section-title">Financial trajectory</h2>
+
+      <h3>Revenue (5-year + guide)</h3>
+      <table class="trajectory">
+        <thead>
+          <tr><th>Period</th><th class="num">Revenue</th><th class="num">YoY</th><th class="num">Note</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="period">FY21</td><td class="num">$272.0M</td><td class="num">—</td><td class="num">Pre-Wegovy era</td></tr>
+          <tr><td class="period">FY22</td><td class="num">$526.9M</td><td class="num delta-pos">+94%</td><td class="num">DTC scaling</td></tr>
+          <tr><td class="period">FY23</td><td class="num">$872.0M</td><td class="num delta-pos">+65%</td><td class="num">Personalized treatments adoption</td></tr>
+          <tr><td class="period">FY24</td><td class="num">$1,476.5M</td><td class="num delta-pos">+69%</td><td class="num">GLP-1 launch + Wegovy partnership</td></tr>
+          <tr><td class="period">FY25</td><td class="num">$2,347.6M</td><td class="num delta-pos">+59%</td><td class="num">Compounded GLP-1 peak; latest reported</td></tr>
+          <tr><td class="period">FY26 guide (mid)</td><td class="num">$2.8B</td><td class="num delta-pos">+19%</td><td class="num">Range $2.7–2.9B; deceleration</td></tr>
+          <tr><td class="period">2030 LT target</td><td class="num">$6.5B</td><td class="num delta-pos">+18% CAGR</td><td class="num">Mgmt aspirational</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size: 14px; color: var(--color-text-muted); margin-top: -6px;">FY25 reported $2,347.6M (+59% YoY). FY26 guide midpoint of $2.8B implies a sharp deceleration from +59% to +19% — explicitly because compounded-GLP-1 revenue is being walked off the platform. International revenue (Rest of World) grew +399% YoY off small base — Eucalyptus closes mid-2026 and is excluded from this guide.</p>
+
+      <h3>Adj EBITDA + Gross Margin</h3>
+      <table class="trajectory">
+        <thead>
+          <tr><th>Period</th><th class="num">Revenue</th><th class="num">Adj EBITDA</th><th class="num">Margin</th><th class="num">GM%</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="period">FY24</td><td class="num">$1,477M</td><td class="num">~$177M</td><td class="num">12%</td><td class="num">79%</td></tr>
+          <tr><td class="period">FY25</td><td class="num">$2,348M</td><td class="num delta-pos">$318M</td><td class="num delta-pos">14%</td><td class="num delta-neg">74%</td></tr>
+          <tr><td class="period">Q3 FY25</td><td class="num">$599M</td><td class="num">$78M</td><td class="num">13%</td><td class="num">74%</td></tr>
+          <tr><td class="period">Q4 FY25</td><td class="num">$618M</td><td class="num delta-neg">$66M</td><td class="num delta-neg">11%</td><td class="num delta-neg">72%</td></tr>
+          <tr><td class="period">Q1 FY26 guide</td><td class="num">$600–625M</td><td class="num">$35–55M</td><td class="num">6–9%</td><td class="num">—</td></tr>
+          <tr><td class="period">FY26 guide (mid)</td><td class="num">$2.8B</td><td class="num">$338M</td><td class="num">12%</td><td class="num">~72–73%</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size: 14px; color: var(--color-text-muted); margin-top: -6px;">EBITDA grew +80% YoY in FY25 ($177M → $318M), but the trajectory broke in Q4 (margin slipped to 11%) and Q1 2026 guide is even weaker (6–9%) due to the explicit ~$65M shipping-cadence headwind from the oral-pill withdrawal. Gross margin compression −500 bps in Q4 to 72% reflects the early stage of the branded-GLP-1 distribution mix shift.</p>
+
+      <h3>Free Cash Flow (compression — bear's load-bearing data point)</h3>
+      <table class="trajectory">
+        <thead>
+          <tr><th>Period</th><th class="num">OCF</th><th class="num">CapEx</th><th class="num">FCF</th><th class="num">YoY FCF</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="period">FY24</td><td class="num">$251M</td><td class="num">$53M</td><td class="num">$198M</td><td class="num">—</td></tr>
+          <tr><td class="period">FY25</td><td class="num">$300M</td><td class="num delta-neg">$243M</td><td class="num delta-neg">$57M</td><td class="num delta-neg">−71%</td></tr>
+          <tr><td class="period">Q4 FY25</td><td class="num">$61M</td><td class="num">~$64M</td><td class="num delta-neg">−$3M</td><td class="num delta-neg">turned negative</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size: 14px; color: var(--color-text-muted); margin-top: -6px;">FCF compressed from $198M to $57M YoY despite revenue +59% — capex absorbed the entire EBITDA expansion. FY25 capex breakdown: ~$226M PP&amp;E + intangibles, ~$17M website/internal-use software. Pharmacy automation and facility footprint expansion (>1M sq ft) are management's offensive bets — but the cash-compounding narrative is on hold until capex normalizes (mgmt has not guided when).</p>
+
+      <h3>Key KPIs (FY25)</h3>
+      <ul class="memo-list">
+        <li><strong>Subscribers:</strong> 2.511M (+13% YoY); only ~40K net adds in Q4 (decelerating)</li>
+        <li><strong>Monthly revenue per avg subscriber:</strong> $83 (+28% YoY) — strong ARPU expansion despite GLP-1 attrition</li>
+        <li><strong>Online revenue:</strong> $2.31B (98% of total); Wholesale: $36M</li>
+        <li><strong>US revenue:</strong> $2.21B; Rest of World: $134M (+399% YoY off small base)</li>
+        <li><strong>Personalized treatments mix:</strong> ~65% of subscribers (multi-product cohorts; mgmt-disclosed)</li>
+        <li><strong>Compounded-GLP-1 subscribers:</strong> Mgmt described as "small minority" — exact mix not disclosed</li>
+      </ul>
+
+      <h3>Balance Sheet (FY25 — Dec 31, 2025)</h3>
+      <ul class="memo-list">
+        <li><strong>Cash &amp; equivalents:</strong> $228.6M; Short-term investments: $348.9M; Combined: <strong>$577.5M</strong></li>
+        <li><strong>Total debt:</strong> ~$1.12B (Yahoo); convertible senior notes raised in 2025 with $970M net proceeds</li>
+        <li><strong>Net debt position:</strong> ~$543M (versus net cash $200M+ at FY24 — a meaningful capital structure shift)</li>
+        <li><strong>Stockholders' equity:</strong> $540.9M; Accumulated deficit: −$113.8M</li>
+        <li><strong>Class A shares outstanding:</strong> 218.87M; Float: 207.4M</li>
+      </ul>
+    </section>
+
+    <section class="memo-section" id="section-5">
+      <div class="section-chip"><span class="section-chip-num">05</span><span>VALUATION</span></div>
+      <h2 class="section-title">Valuation</h2>
+
+      <p>HIMS now has GAAP profitability ($128M FY25 net income) so traditional metrics work; but the meaningful anchors are <strong>EV/Revenue, EV/Adj-EBITDA, and Adj-EBITDA yield</strong> given the FCF compression. Valuation is currently below most consumer-health peers on EV/Sales but above pure-play telehealth peers on absolute basis.</p>
+
+      <table class="valuation">
+        <thead>
+          <tr>
+            <th>Metric</th>
+            <th class="num">Current</th>
+            <th class="num">3y Median</th>
+            <th class="num">3y Low</th>
+            <th class="num">3y High</th>
+            <th class="read">Read</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="metric">EV / Revenue (TTM)</td><td class="num">3.08×</td><td class="num">~5×</td><td class="num">~1×</td><td class="num">~9×</td><td class="read below">Below median</td></tr>
+          <tr><td class="metric">EV / Adj EBITDA (FY25)</td><td class="num">22.8×</td><td class="num">~25×</td><td class="num">N/A</td><td class="num">~50×</td><td class="read below">Below median (newly EBITDA-positive)</td></tr>
+          <tr><td class="metric">Adj EBITDA Yield (FY25)</td><td class="num">5.0%</td><td class="num">~3%</td><td class="num">N/A</td><td class="num">~6%</td><td class="read below">Near 3y peak</td></tr>
+          <tr><td class="metric">FCF Yield (FY25)</td><td class="num">0.9%</td><td class="num">~2%</td><td class="num">N/A</td><td class="num">~13%</td><td class="read above">Below median (capex absorption)</td></tr>
+          <tr><td class="metric">P/E (TTM)</td><td class="num">54.7×</td><td class="num">~70×</td><td class="num">N/A</td><td class="num">N/A</td><td class="read below">Below median</td></tr>
+          <tr><td class="metric">PEG</td><td class="num">2.53</td><td class="num">~2.5</td><td class="num">~1.5</td><td class="num">~5</td><td class="read">Mid-range</td></tr>
+          <tr><td class="metric">P/Book</td><td class="num">12.4×</td><td class="num">~15×</td><td class="num">~5×</td><td class="num">~30×</td><td class="read below">Below median</td></tr>
+        </tbody>
+      </table>
+
+      <h3>vs. Peers (consumer health + telehealth + DTC pharmacy)</h3>
+      <table class="valuation">
+        <thead>
+          <tr>
+            <th>Company</th>
+            <th class="num">EV/Sales</th>
+            <th class="num">EV/EBITDA</th>
+            <th class="num">FCF Yield</th>
+            <th class="num">Rev YoY</th>
+            <th class="num">Note</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="metric">HIMS</td><td class="num">3.08×</td><td class="num">22.8×</td><td class="num">0.9%</td><td class="num delta-pos">+59%</td><td class="num">EBITDA-positive, FCF compressing</td></tr>
+          <tr><td class="metric">DOCS (Doximity)</td><td class="num">~9×</td><td class="num">~22×</td><td class="num">~5%</td><td class="num delta-pos">+15%</td><td class="num">Mature SaaS-like network</td></tr>
+          <tr><td class="metric">TDOC (Teladoc)</td><td class="num">~1.4×</td><td class="num">~9×</td><td class="num">~6%</td><td class="num delta-neg">−2%</td><td class="num">Legacy telehealth, contracting</td></tr>
+          <tr><td class="metric">AMWL (Amwell)</td><td class="num">~0.5×</td><td class="num">N/A</td><td class="num">N/A</td><td class="num delta-neg">−5%</td><td class="num">Subscale</td></tr>
+          <tr><td class="metric">LFMD (LifeMD)</td><td class="num">~1.5×</td><td class="num">~15×</td><td class="num">~3%</td><td class="num delta-pos">+25%</td><td class="num">Smaller HIMS analog</td></tr>
+          <tr><td class="metric">RVTY (Revolve)</td><td class="num">~1.2×</td><td class="num">~12×</td><td class="num">~5%</td><td class="num delta-pos">+5%</td><td class="num">DTC consumer reference</td></tr>
+        </tbody>
+      </table>
+
+      <p><strong>Read:</strong> HIMS trades at a meaningful premium to mature telehealth (TDOC at 1.4× EV/Sales reflects structural decline; AMWL at 0.5× reflects irrelevance) and a discount to DOCS (9× EV/Sales reflects SaaS-like recurring economics). LFMD at 1.5× is the closest analog and shows HIMS' premium is partly justified by scale, brand, and ARPU. The asymmetry is that HIMS now prints adj EBITDA $318M (FY25) — peers like LFMD are sub-$50M EBITDA. EV/EBITDA 22.8× is fair-to-cheap for a +19% revenue grower with $300M+ EBITDA. Re-rating to ~30× EV/EBITDA on FY26 guide ($338M) implies $10B EV / $9.4B mkt cap = $43/share — +54% upside from $27.88. Bull-case re-rating to ~35× on FY27 EBITDA $400M+ implies $14B EV → $63/share, near the prior 52W high.</p>
+    </section>
+
+    <section class="memo-section" id="section-6">
+      <div class="section-chip"><span class="section-chip-num">06</span><span>BUSINESS &amp; MOAT</span></div>
+      <h2 class="section-title">Business &amp; competitive moat</h2>
+
+      <div class="callout callout-ai">
+        <span class="tag">AI</span>
+        <div>Moat analysis. Output of a "could a well-funded entrant replicate this in 3 years?" mental test.</div>
+      </div>
+
+      <p>Hims &amp; Hers operates a consumer-health platform with three layers: (1) <strong>brand and demand</strong> — Hims (men) and Hers (women) brand DTC, ~$200M+ annual ad spend (incl. Super Bowl), 2.5M+ subscribers; (2) <strong>vertically integrated mail-order pharmacy</strong> — own/contract compounding pharmacies, automated fulfillment facilities (>1M sq ft), in-house formulation; (3) <strong>telehealth + provider network</strong> — independent licensed providers across all 50 states, asynchronous-first care for chronic / lifestyle conditions (sexual health, hair, mental health, weight, dermatology). Recent verticals: peptides, longevity diagnostics (post-Urbio), GLP-1 (now branded distribution).</p>
+
+      <h3>Moat components</h3>
+      <ul class="memo-list">
+        <li><strong>Brand and acquisition machine.</strong> Hims/Hers brand recognition is the strongest in the DTC consumer-health category. CAC efficiency improving — ARPU growth +28% YoY with subscriber growth +13% means revenue per dollar of ad spend is meaningfully expanding. Hard for new entrants to overcome without 5+ years of brand investment.</li>
+        <li><strong>Multi-product cross-sell flywheel.</strong> ~65% of subscribers on personalized (multi-product) treatments — meaningfully higher LTV than single-product subscribers. The cross-sell motion (e.g. hair → mental health → weight → longevity) is a structural advantage over single-vertical telehealth (LifeMD, Ro, Cerebral).</li>
+        <li><strong>Vertically integrated pharmacy operations.</strong> Owning or controlling fulfillment + compounding + provider network gives margin advantage and product velocity (e.g. launching a new compounded formulation in weeks, not months) — though this advantage was disrupted by the FDA's compounded-GLP-1 enforcement and is partially compromised in the new branded-distribution model.</li>
+        <li><strong>Subscription / repeat-purchase economics.</strong> ~$83 monthly ARPU, retention measured in years for chronic-condition cohorts (hair loss, mental health). The cash-collected-upfront economics give working capital advantage and stable revenue visibility.</li>
+        <li><strong>International optionality (Eucalyptus).</strong> $1.15B (up to) buys scaled telehealth in Australia, UK, Germany, Japan, Canada. Pre-built provider networks in these geographies — would take 3–5 years to replicate organically.</li>
+      </ul>
+
+      <h3>Moat vulnerabilities</h3>
+      <ul class="memo-list">
+        <li><strong>Regulatory dependence on compounding.</strong> The 2024 growth surge was disproportionately compounded GLP-1; the FDA's enforcement of compounding statutes (under section 503A/503B) has structurally compressed margin on this product line. Any further FDA action — say, on compounded peptides or other lifestyle-drug compounds — directly hits the model.</li>
+        <li><strong>Branded-distribution mix is lower margin.</strong> Distributing Wegovy/Ozempic at NovoCare-self-pay parity means HIMS earns a distribution margin, not a manufacturing margin. The Q4 −500bps gross margin compression to 72% likely persists or deepens through 2026 as the branded mix grows.</li>
+        <li><strong>SEC investigation tail.</strong> Outcome unquantified. Worst case: revenue restatement of compounded-GLP-1-era quarters; civil monetary penalty; possible director/officer liability.</li>
+        <li><strong>Competition from cleaner platforms.</strong> Amazon Pharmacy + One Medical for primary care; Eli Lilly's LillyDirect for branded GLP-1; Mark Cuban Cost Plus for generic pricing transparency; Ro and LifeMD for direct DTC overlap. None individually a Hims-killer; cumulatively a margin pressure.</li>
+        <li><strong>Provider network commoditization.</strong> The telehealth provider supply has expanded dramatically since COVID; HIMS does not have exclusive contracts. Provider-side pricing pressure could compress margins.</li>
+      </ul>
+
+      <p style="border-top: 1px dashed var(--color-rule); padding-top: 14px; font-style: italic; color: var(--color-text-muted);">Replicability test: A well-funded entrant could not replicate HIMS in 3 years <em>at scale</em>. The brand, subscription base, and pharmacy infrastructure are 3–5 year capital and time builds. The genuine question is whether the model — especially the cross-sell flywheel and ARPU expansion — is durable through the regulatory transition from compounded-GLP-1 to branded-distribution. The answer becomes clearer over the next 4 quarters as the branded-mix gross margin floor reveals itself.</p>
+    </section>
+
+    <section class="memo-section" id="section-7">
+      <div class="section-chip"><span class="section-chip-num">07</span><span>MACRO &amp; SECTOR</span></div>
+      <h2 class="section-title">Macro &amp; sector context</h2>
+
+      <p><strong>Telehealth + DTC pharmacy TAM.</strong> The global addressable market is sizeable — US telehealth visits exceed 100M annually, US prescription drugs total $400B+ — but heavily fragmented. HIMS' 2.5M sub base represents ~1% of US adults; consumer-health spend per HIMS subscriber ($83/mo = ~$1,000/yr) sits well below the typical US adult's $4,000+ healthcare spend. The penetration runway is long if HIMS can expand into more conditions (peptides, longevity, primary care).</p>
+
+      <p><strong>Compounding regulation dynamics.</strong> Section 503A/503B of the FD&amp;C Act allows compounding pharmacies under specific exemptions; the FDA's Feb 2026 enforcement action signals a tightening interpretation. The Novo settlement (Mar 9) contains explicit terms HIMS must follow; non-compliance triggers potential federal action. Future state: HIMS is clearly <em>not</em> the compounded-GLP-1 disruptor narrative of 2024 — but a hybrid distributor + compounder for non-GLP-1 categories. The regulatory ceiling on this hybrid model is uncertain.</p>
+
+      <p><strong>GLP-1 supply dynamics.</strong> Novo and Lilly have meaningfully expanded production capacity through 2025–2026; the FDA-declared GLP-1 shortage that justified compounding has effectively ended. This is the structural reason HIMS pivoted: the regulatory shelter for compounded GLP-1 is gone permanently. Whether branded-distribution at NovoCare-parity drives subscriber retention and ARPU is the open question.</p>
+
+      <p><strong>Insurance / employer-benefit channels.</strong> HIMS is consumer-cash-pay, not insurance. This is positioned as a feature (transparent pricing, no insurance friction) but limits TAM relative to insurance-routed competitors. Mgmt has said expanding into employer benefits is not in current FY26 plans.</p>
+
+      <p><strong>Macro consumer.</strong> Discretionary healthcare ($83/month subscription) sits in the discretionary-spending bucket; recession risk is real. However, HIMS' chronic-condition cohorts (hair loss, mental health) have demonstrated retention through prior soft macro periods — these are sticky.</p>
+
+      <p><strong>Currency.</strong> Currently &gt;94% US revenue. Eucalyptus close in mid-2026 introduces material international exposure (AUD, GBP, EUR). Currency hedging policy not yet disclosed.</p>
+    </section>
+
+    <section class="memo-section" id="section-8">
+      <div class="section-chip"><span class="section-chip-num">08</span><span>CAPITAL STRUCTURE</span></div>
+      <h2 class="section-title">Capital structure &amp; capital returns</h2>
+
+      <ul class="memo-list">
+        <li><strong>Debt profile shifted in 2025.</strong> HIMS raised $970M net proceeds in convertible senior notes during 2025 — moving from net-cash to net-debt position. Total debt per Yahoo ~$1.12B; cash + ST investments $577M = net debt ~$543M. Coupon and conversion terms not yet extracted from the 10-K filing.</li>
+        <li><strong>Eucalyptus consideration.</strong> Up to $1.15B; ~$240M cash upfront; remainder earnout/equity. Closes mid-2026, subject to regulatory approval. Reduces cash; potentially adds shares; potentially adds debt.</li>
+        <li><strong>Dividend.</strong> None.</li>
+        <li><strong>Buybacks.</strong> Modest — net dilution from SBC has historically exceeded buybacks. Mgmt has not announced a programmatic repurchase. Given the convert + Eucalyptus + capex stack, buybacks are unlikely material in 2026.</li>
+        <li><strong>CapEx ramp.</strong> FY24 $53M → FY25 $243M (+360%). Pharmacy automation + facility footprint &gt;1M sq ft. Mgmt has signaled FY26 capex stays elevated though specific guide not provided. Capex absorption is the proximate cause of the FY25 FCF compression.</li>
+        <li><strong>Stock-based compensation.</strong> Not separately disclosed in scraped press release; inferable from $300M OCF − $128M net income = ~$170M+ in non-cash adjustments, of which SBC is the largest. Net dilution running mid-single-digits annually.</li>
+      </ul>
+
+      <p><strong>Read.</strong> Capital structure is now a constraint, not a tailwind. The 2025 convert raise + Eucalyptus + capex stack means cash discipline matters. The bull case requires (a) FY26 FCF returning to a normalizing trajectory once capex tapers (likely 2027), (b) Eucalyptus contributing organically by 2027, (c) no SEC-driven cash payment. The bear case has the convert overhang trigger dilution if the stock declines further, and capex stays elevated longer than guided.</p>
+    </section>
+
+    <section class="memo-section" id="section-9">
+      <div class="section-chip"><span class="section-chip-num">09</span><span>CATALYSTS</span></div>
+      <h2 class="section-title">Catalysts (next 12 months)</h2>
+
+      <div class="catalyst-block">
+        <div class="catalyst-header">
+          <span class="catalyst-title">Q1 FY26 earnings <span class="catalyst-priority p0">P0</span></span>
+          <span class="catalyst-date">May 11, 2026 (13 days from this memo)</span>
+        </div>
+        <div class="catalyst-body">The most binary near-term catalyst. Mgmt has already disclosed Q1 guide of $600–625M revenue and $35–55M adj EBITDA (6–9% margin) — explicitly weakened by the ~$65M shipping-cadence headwind from oral-pill withdrawal. Watch: (1) revenue at upper end ($625M+) signals branded transition is faster than feared; (2) EBITDA at upper end ($55M+) signals margin compression less than worst-case; (3) sub count above 2.55M signals retention through GLP-1 transition; (4) any update on SEC investigation status. Miss on revenue &lt;$580M AND/OR EBITDA &lt;$30M triggers exit-trigger review.</div>
+      </div>
+
+      <div class="catalyst-block">
+        <div class="catalyst-header">
+          <span class="catalyst-title">SEC investigation update / closure <span class="catalyst-priority p0">P0</span></span>
+          <span class="catalyst-date">Indeterminate — could land any time</span>
+        </div>
+        <div class="catalyst-body">The unresolved tail. Outcome paths: (a) no action / closure — biggest upside catalyst (frees the multiple); (b) civil monetary penalty without restatement — moderately positive (uncertainty resolved, asset-light hit); (c) restatement of compounded-GLP-1-era revenue — would flip thesis to Structural and trigger immediate exit. Watch 8-K filings for any SEC correspondence.</div>
+      </div>
+
+      <div class="catalyst-block">
+        <div class="catalyst-header">
+          <span class="catalyst-title">Eucalyptus close + integration <span class="catalyst-priority p1">P1</span></span>
+          <span class="catalyst-date">Mid-2026</span>
+        </div>
+        <div class="catalyst-body">$1.15B (up to) deal closing pending regulatory approval. First quarter post-close (likely Q3 2026 print) will reveal: (a) revenue contribution scale, (b) whether HIMS provides FY26 revised guide including Eucalyptus, (c) integration capex implications. Successful integration adds ~$200–300M revenue contribution in 2H 2026 and validates the international platform thesis.</div>
+      </div>
+
+      <div class="catalyst-block">
+        <div class="catalyst-header">
+          <span class="catalyst-title">Lilly distribution deal scaling <span class="catalyst-priority p1">P1</span></span>
+          <span class="catalyst-date">Q2 / Q3 2026 prints</span>
+        </div>
+        <div class="catalyst-body">Per BofA Apr 27 note, HIMS signed an Eli Lilly distribution arrangement. Watch quarterly disclosures for: (1) Lilly-routed revenue volume, (2) gross margin on Lilly distribution vs Novo (likely similar — both branded), (3) whether HIMS becomes a primary channel for LillyDirect-Zepbound or a secondary one. Lilly distribution scaling validates the routing-legitimacy rebuild.</div>
+      </div>
+
+      <div class="catalyst-block">
+        <div class="catalyst-header">
+          <span class="catalyst-title">Capex normalization signal <span class="catalyst-priority p2">P2</span></span>
+          <span class="catalyst-date">Q3 / Q4 2026 prints</span>
+        </div>
+        <div class="catalyst-body">Mgmt has signaled FY26 capex stays elevated; the question is when it tapers. First quarter showing capex declining sequentially or guidance for FY27 capex/revenue ratio &lt;5% would signal FCF-compounding can return — re-rates the multiple toward DOCS-like levels (5%+ FCF yield). Conversely, capex staying elevated through 2027 keeps FCF compressed and multiple capped.</div>
+      </div>
+
+      <div class="catalyst-block">
+        <div class="catalyst-header">
+          <span class="catalyst-title">DOJ referral disposition <span class="catalyst-priority p2">P2</span></span>
+          <span class="catalyst-date">Indeterminate</span>
+        </div>
+        <div class="catalyst-body">The Feb 6 HHS-to-DOJ referral has not produced any public DOJ filing or declination notice as of April 2026. Either path (declination or filing) is informative. Closure / declination removes a meaningful overhang; filing would compound the SEC concern.</div>
+      </div>
+    </section>
+
+    <section class="memo-section" id="section-10">
+      <div class="section-chip"><span class="section-chip-num">10</span><span>TRADING SIGNALS</span></div>
+      <h2 class="section-title">Market trading signals</h2>
+
+      <p style="font-size: 14px; color: var(--color-text-muted);">Tiebreakers, not primary signals. Used to confirm or contradict the fundamental thesis.</p>
+
+      <table class="signals">
+        <thead>
+          <tr>
+            <th>Signal</th>
+            <th>Reading</th>
+            <th class="tiebreaker">Direction</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="signal">Insider activity (last 6mo)</td>
+            <td>~25 sale Form 4 filings, <strong>0 open-market buys</strong>. Aggregate ~$26–28M sold by named officers (CFO Okupe ~$5.6M; CEO Dudum $20M+ in Sep–Oct 2025 BEFORE drawdown; COO Chi ~$3M; GC Boughton ~$1M; CMO Carroll ~$0.6M). Continued officer selling at $19–$30 in Mar–Apr 2026 (near lows). 10b5-1 plans visible but the breadth (CFO+COO+CMO+GC+PAO all selling) is bearish-significant. <strong>Negative tiebreaker.</strong></td>
+            <td class="tiebreaker neg">−1</td>
+          </tr>
+          <tr>
+            <td class="signal">Institutional flow (Q4 2025 13-F)</td>
+            <td>Net institutional ownership change is <strong>mixed-but-net-bullish on quality dispersion</strong>. Top adders: <strong>Citadel +1,158%</strong> (Ken Griffin built 2.0M-share long), Goldman +12%, BlackRock +5.7%, UBS +59%, Casdin Capital (healthcare specialist) +67%, Kingdon Capital NEW, Millennium +91%, AQR +87%, DE Shaw NEW. Top trimmers: <strong>JPMorgan −79% (-15M shares, major exit)</strong>, Farallon Capital −68%, Capital World Investors −24%, Renaissance Technologies −47%, Morgan Stanley −46%, DFA −49%. Q1 2026 13-F not yet filed.</td>
+            <td class="tiebreaker pos">+1</td>
+          </tr>
+          <tr>
+            <td class="signal">Short interest</td>
+            <td><strong>37.85% of float (30.6% of shares outstanding)</strong> — <em>extremely</em> high for a $6B+ market cap. Short ratio (days to cover) only 2.67 — meaning a positive surprise could trigger a fast covering rally. Squeeze fuel exists but informed positioning also signals sustained skepticism. <strong>Asymmetric positive tiebreaker</strong> if Q1 print is clean — but a miss compounds with the squeeze unwind.</td>
+            <td class="tiebreaker pos">+1</td>
+          </tr>
+          <tr>
+            <td class="signal">Volume pattern</td>
+            <td>Avg 3-month volume <strong>39.93M shares/day</strong> — extremely heavy relative to float (207M). Capitulation-style volume spike on Feb 24 (52W low). Recent volume on Lilly-deal news (Apr 27) elevated but not euphoric. Steady distribution-style activity.</td>
+            <td class="tiebreaker neutral">0</td>
+          </tr>
+          <tr>
+            <td class="signal">Sentiment temperature</td>
+            <td><strong>Cool, transitioning to Cautiously Constructive.</strong> Median PT $23.12 (still below current); Hold-skewed consensus. But recent direction: BofA $21 → $32 (Apr 27); JPM initiated Overweight (Apr 24); Barclays $25 → $29 (Mar 11). Sell-side is upgrading after the Novo settle. 1-year analyst target $25.57 still below current — meaning the rally is ahead of consensus.</td>
+            <td class="tiebreaker pos">+1</td>
+          </tr>
+          <tr>
+            <td class="signal">Adj EBITDA yield + revenue growth</td>
+            <td>Adj EBITDA yield 5.0% on FY25, implied 5.3% on FY26 guide midpoint. Revenue growth +59% FY25 → +19% FY26 guide (deceleration). FCF yield only 0.9% (capex absorption). The "cash compounding" framework is on hold; the "EBITDA-positive + EV/EBITDA below peers" framework is in play.</td>
+            <td class="tiebreaker pos">+1</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="aggregate-read">
+        <strong>Aggregate read:</strong> +3 net (Citadel + analyst pivot + EBITDA-yield + short-squeeze-asymmetry against insider-sell-cluster). Sentiment is in a "rolling-but-now-rebuilding" stage. The 37.85% short interest is the most asymmetric variable: a clean Q1 print could trigger material covering, but a miss would compound with squeeze unwind.
+      </div>
+    </section>
+
+    <section class="memo-section" id="section-11">
+      <div class="section-chip"><span class="section-chip-num">11</span><span>SMART MONEY</span></div>
+      <h2 class="section-title">Sector smart money perspective</h2>
+
+      <div class="callout callout-warning">
+        <span class="tag" style="background: var(--color-warning); color: white;">BRIDGE MODE</span>
+        <div>Smart Money §11 ran in <strong>Bridge Mode</strong> — Healthcare/Services sector is empty in the registry. 8 firms borrowed from <strong>Consumer Discretionary</strong> (5 firms — direct portfolio overlap with HIMS' DTC consumer brand thesis) + <strong>Healthcare/Pharma</strong> (3 firms — regulatory + GLP-1 lens). Per spec §3.7.5. Add Healthcare/Services firms to <code style="font-family: var(--font-mono); font-size: 12px;">~/.claude/skills/stock-research/sector-firms.json</code> to enable full mode for future runs.</div>
+      </div>
+
+      <div class="callout callout-ai">
+        <span class="tag">AI</span>
+        <div>Frameworks of leading sector-focused investors applied to HIMS. Two of the 5 primary firms — <strong>Forerunner Ventures</strong> and <strong>Verlinvest</strong> — are direct HIMS portfolio firms (registry framework_descriptors explicitly cite Hims). <strong>Frameworks applied — not direct quotes.</strong></div>
+      </div>
+
+      <h3>The 8 firms surveyed (Bridge Mode)</h3>
+      <p style="font-size: 14px; color: var(--color-text-muted); margin-bottom: 18px;">5 from Consumer Discretionary registry (DTC + brand specialists, including 2 direct HIMS-exposure firms) + 3 from Healthcare/Pharma registry (regulatory + crossover lens for the GLP-1 dimension).</p>
+
+      <div class="firms-grid">
+        <div class="firm-card primary">
+          <div class="firm-tier">Bridged · Consumer Discretionary</div>
+          <div class="firm-name">Forerunner Ventures</div>
+          <div class="firm-meta">~$2B AUM · Consumer DTC pioneer</div>
+          <div class="firm-thesis">Glossier, Bonobos, Warby Parker, <strong>Hims (early-stage)</strong>. Thesis: brand-as-distribution structurally won by specialists, not legacy incumbents. Direct early-stage HIMS exposure; thesis aligned with the cross-sell flywheel narrative.</div>
+          <div class="firm-relevance"><a href="https://forerunnerventures.com/blog" target="_blank" rel="noopener">forerunnerventures.com/blog</a> · Public blog · regular thought-leadership posts</div>
+        </div>
+
+        <div class="firm-card primary">
+          <div class="firm-tier">Bridged · Consumer Discretionary</div>
+          <div class="firm-name">Verlinvest</div>
+          <div class="firm-meta">~$5B AUM · Cross-stage consumer (public + private)</div>
+          <div class="firm-thesis">Vita Coco, <strong>Hims</strong>, Tony's Chocolonely, Oatly. Believes premium pricing power = compounding moat when category healthy. Direct HIMS exposure (registry-confirmed); hybrid private+public discipline matches HIMS' transition from growth-IPO to scaled platform.</div>
+          <div class="firm-relevance"><a href="https://www.verlinvest.com/news" target="_blank" rel="noopener">verlinvest.com/news</a> · Sector white papers · quarterly thesis posts</div>
+        </div>
+
+        <div class="firm-card primary">
+          <div class="firm-tier">Bridged · Consumer Discretionary</div>
+          <div class="firm-name">L Catterton</div>
+          <div class="firm-meta">~$34B AUM · Consumer brand specialist</div>
+          <div class="firm-thesis">Backs Vuori, Honest Company, Peloton, Tarte. Thesis: brand advantage durable but requires reinvention every 5-7 years. HIMS' shift from compounded-GLP-1 hero to multi-product platform maps to the "category-pivot" pattern L Catterton's framework treats as opportunity, not threat.</div>
+          <div class="firm-relevance"><a href="https://www.lcatterton.com/insights" target="_blank" rel="noopener">lcatterton.com/insights</a> · Consumer brand reports public</div>
+        </div>
+
+        <div class="firm-card primary">
+          <div class="firm-tier">Bridged · Consumer Discretionary</div>
+          <div class="firm-name">Lerer Hippeau</div>
+          <div class="firm-meta">~$1B AUM · Lifestyle &amp; commerce</div>
+          <div class="firm-thesis">Allbirds, Casper, Warby Parker. View: brand fatigue real but slower than market prices in. For a brand at 60% drawdown — Lerer Hippeau's framework would say differentiated: is this brand fatigue (structural) or temporary regulatory shock (cyclical)?</div>
+          <div class="firm-relevance"><a href="https://www.lererhippeau.com/articles" target="_blank" rel="noopener">lererhippeau.com/articles</a> · Newsletter on consumer cycles</div>
+        </div>
+
+        <div class="firm-card secondary">
+          <div class="firm-tier">Bridged · Consumer Discretionary</div>
+          <div class="firm-name">Pershing Square</div>
+          <div class="firm-meta">~$15B AUM · Activist long-only (Bill Ackman)</div>
+          <div class="firm-thesis">Quality consumer at distress: Chipotle, Restaurant Brands, Howard Hughes. Framework: simple model + cash-generative + activist lever + brand moat. HIMS doesn't quite fit on cash-generative (FCF only $57M FY25), but the framework's drawdown discipline is informative.</div>
+          <div class="firm-relevance"><a href="https://pershingsquareholdings.com/letters/" target="_blank" rel="noopener">Quarterly investor letters publicly available</a></div>
+        </div>
+
+        <div class="firm-card primary">
+          <div class="firm-tier">Bridged · Healthcare/Pharma</div>
+          <div class="firm-name">OrbiMed</div>
+          <div class="firm-meta">$15B+ AUM · Healthcare specialist (public + private)</div>
+          <div class="firm-thesis">Healthcare-only crossover. Public + private. Active across pharma, biotech, devices, services. Best positioned of the 8 to assess: (a) FDA enforcement trajectory, (b) GLP-1 supply normalization economics, (c) HIMS' exposure to the SEC investigation outcome.</div>
+          <div class="firm-relevance"><a href="https://www.orbimed.com/news/" target="_blank" rel="noopener">orbimed.com/news</a> · Sector white papers</div>
+        </div>
+
+        <div class="firm-card primary">
+          <div class="firm-tier">Bridged · Healthcare/Pharma</div>
+          <div class="firm-name">Bessemer Healthcare (Atlas)</div>
+          <div class="firm-meta">~$20B AUM · Bessemer's healthcare arm</div>
+          <div class="firm-thesis">Healthcare Atlas reports. Frameworks on consumer-healthcare benchmarks: NRR, retention by cohort, ARPU evolution, gross margin trajectory. HIMS' KPI stack (subscribers, ARPU, GM, EBITDA margin) maps cleanly to the Bessemer Atlas dashboard.</div>
+          <div class="firm-relevance"><a href="https://www.bvp.com/atlas/healthcare" target="_blank" rel="noopener">bvp.com/atlas/healthcare</a> · Quarterly benchmark reports</div>
+        </div>
+
+        <div class="firm-card secondary">
+          <div class="firm-tier">Bridged · Healthcare/Pharma</div>
+          <div class="firm-name">Endpoints News</div>
+          <div class="firm-meta">Industry trade publication w/ analytical voice</div>
+          <div class="firm-thesis">Independent biotech/pharma trade press with strong regulatory analysis voice. Has covered the HIMS GLP-1 saga across multiple angles (FDA enforcement, Novo settlement, branded-routing pivot). Useful for tracking the regulatory tail through 2026.</div>
+          <div class="firm-relevance"><a href="https://endpts.com" target="_blank" rel="noopener">endpts.com</a> · Daily / weekly analysis</div>
+        </div>
+      </div>
+
+      <h3>Latest lens — applied to HIMS</h3>
+      <p style="font-size: 14px; color: var(--color-text-muted); margin-bottom: 18px;">Five frameworks (selected from the 8 above for direct relevance) applied to the current setup. <strong>Frameworks applied — not direct quotes.</strong></p>
+
+      <div class="framework-block">
+        <div class="framework-firm">Forerunner Ventures lens</div>
+        <div class="framework-firm-meta">Direct early-stage HIMS investor · brand-as-distribution thesis</div>
+        <div class="framework-text">Forerunner Ventures' core thesis — brand-as-distribution is structurally won by specialists, not legacy incumbents — applies recursively to HIMS itself. The compounded-GLP-1 era was an inflection where HIMS, the specialist, briefly out-distributed the incumbents (Novo retail, traditional pharmacy). The subsequent regulatory crackdown and Novo settlement are the incumbent-specialist friction Forerunner's framework expects, but the underlying brand moat remains: 2.51M subscribers, $83 ARPU, 65% on personalized treatments. The Forerunner lens treats this as cyclical brand reinvention — temporarily compressed margin while the platform absorbs the regulatory shift, then reaccelerates as the cross-sell engine plays out across new categories (peptides, longevity, primary care).<br><br><strong>Applied to HIMS:</strong> Would consider — Forerunner's framework treats compressed brand earnings as opportunity when the brand moat is intact. The Mar 9 Novo settlement validated HIMS' ability to negotiate from a position of platform leverage. Position sizing reflects regulatory tail; full conviction returns once SEC investigation resolves.</div>
+        <div class="framework-sources">
+          <span class="chip-label">Sources:</span>
+          <a class="firm-chip" href="https://forerunnerventures.com/blog" target="_blank" rel="noopener">Forerunner blog<span class="src-icon">↗</span></a>
+        </div>
+        <div class="framework-disclaimer">Framework applied — not a direct quote</div>
+      </div>
+
+      <div class="framework-block">
+        <div class="framework-firm">Verlinvest lens</div>
+        <div class="framework-firm-meta">Direct HIMS investor · premium pricing power = compounding moat thesis</div>
+        <div class="framework-text">Verlinvest's framework — premium pricing power compounds when category is healthy — engages with the HIMS ARPU pattern: $83 monthly per subscriber, +28% YoY, even as compounded-GLP-1 mix declined. That ARPU expansion is the load-bearing data point: it implies subscribers are buying more product / higher-tier products, not buying less because of the GLP-1 transition. Verlinvest's hybrid public+private discipline reads HIMS at $27.88 as the public-market-dislocation phase of a thesis Verlinvest is presumably patient on (assuming positions persist post-IPO). The Eucalyptus acquisition is consistent with Verlinvest's playbook of geographic platform-building.<br><br><strong>Applied to HIMS:</strong> Would buy — Verlinvest's framework gives weight to premium ARPU expansion through category transitions. Drawdown of 60% with ARPU still expanding is the asymmetry their lens engages with.</div>
+        <div class="framework-sources">
+          <span class="chip-label">Sources:</span>
+          <a class="firm-chip" href="https://www.verlinvest.com/news" target="_blank" rel="noopener">Verlinvest news<span class="src-icon">↗</span></a>
+        </div>
+        <div class="framework-disclaimer">Framework applied — not a direct quote</div>
+      </div>
+
+      <div class="framework-block">
+        <div class="framework-firm">OrbiMed lens</div>
+        <div class="framework-firm-meta">Healthcare specialist crossover · regulatory + GLP-1 supply expert</div>
+        <div class="framework-text">OrbiMed's healthcare-specialist framework is best positioned of the 8 firms to weigh the regulatory tail. Their lens would distinguish: (1) compounding-statute-503A enforcement is now the new baseline; (2) the Novo and Lilly distribution arrangements are positive routing legitimacy; (3) the SEC investigation is a closed-set risk (worst case quantifiable as restatement of compounded-GLP-1-era revenue, perhaps $200–400M total). Crossover funds like OrbiMed value asymmetry where the regulatory worst-case is bounded and the operating thesis is preserved. The HIMS asset has bounded downside from the SEC tail (assuming no fraud finding) and meaningful upside from the international + multi-vertical platform thesis.<br><br><strong>Applied to HIMS:</strong> Would tactical-position — OrbiMed-style sizing would be smaller than full conviction until SEC outcome is known, but the regulatory transition is more navigable than recovery prices imply.</div>
+        <div class="framework-sources">
+          <span class="chip-label">Sources:</span>
+          <a class="firm-chip" href="https://www.orbimed.com/news/" target="_blank" rel="noopener">OrbiMed insights<span class="src-icon">↗</span></a>
+        </div>
+        <div class="framework-disclaimer">Framework applied — not a direct quote</div>
+      </div>
+
+      <div class="framework-block">
+        <div class="framework-firm">Bessemer Healthcare (Atlas) lens</div>
+        <div class="framework-firm-meta">KPI / cohort framework for consumer healthcare</div>
+        <div class="framework-text">Bessemer's Atlas framework reads HIMS' KPI stack on multiple axes: (1) Subscribers 2.51M, +13% YoY — decelerating but positive; (2) ARPU $83/mo, +28% YoY — strong, dominant axis; (3) Gross margin 74% FY25 vs 79% FY24 — compressing structurally as branded mix grows; (4) Adj EBITDA margin 14% FY25 → 12% FY26 guide — modest compression; (5) FCF margin 2.4% — significantly below SaaS-like benchmarks. Bessemer's "Rule of 40" equivalent for consumer health (revenue growth + EBITDA margin) was 73 in FY25 (+59% growth + 14% margin) and would be 31 on FY26 guide midpoint (+19% growth + 12% margin) — the deceleration takes HIMS from "exceptional" to "average" Atlas-classification.<br><br><strong>Applied to HIMS:</strong> Would pass on traditional cohort metrics, but engage on price discipline — at 22.8× EV/EBITDA versus peers' 15–25× and HIMS being one of the few EBITDA-positive consumer-health platforms, the asset is compelling at this price level.</div>
+        <div class="framework-sources">
+          <span class="chip-label">Sources:</span>
+          <a class="firm-chip" href="https://www.bvp.com/atlas/healthcare" target="_blank" rel="noopener">Bessemer Atlas Healthcare<span class="src-icon">↗</span></a>
+        </div>
+        <div class="framework-disclaimer">Framework applied — not a direct quote</div>
+      </div>
+
+      <div class="framework-block">
+        <div class="framework-firm">L Catterton lens</div>
+        <div class="framework-firm-meta">Brand reinvention every 5-7 years framework</div>
+        <div class="framework-text">L Catterton's thesis — brand advantage durable but requires reinvention every 5-7 years — is the most direct framework match for HIMS' 2026 setup. Hims/Hers brand was launched 2017–2018; the 5–7 year reinvention window opens 2022–2025. The compounded-GLP-1 era was the first reinvention; the forced pivot to branded distribution + Eucalyptus + peptides is the SECOND reinvention. L Catterton's framework treats this as expected, not exceptional. The question for them is whether the reinvention is faster-cycling than the brand can absorb (in which case the brand fatigue thesis kicks in) or whether it's a category expansion the brand naturally extends into. Their portfolio (Vuori, Honest, Peloton) shows mixed outcomes on similar pivots — Peloton is the negative case, Vuori is the positive case.<br><br><strong>Applied to HIMS:</strong> Would consider with discipline — the L Catterton lens flags the reinvention frequency as the key variable. Forced reinvention twice in 18 months (compounded GLP-1 → branded distribution + international) elevates execution risk; first batch sizing reflects that.</div>
+        <div class="framework-sources">
+          <span class="chip-label">Sources:</span>
+          <a class="firm-chip" href="https://www.lcatterton.com/insights" target="_blank" rel="noopener">L Catterton insights<span class="src-icon">↗</span></a>
+        </div>
+        <div class="framework-disclaimer">Framework applied — not a direct quote</div>
+      </div>
+
+      <h3>Synthesis: where the 8 frameworks agree and diverge</h3>
+
+      <div class="synthesis-grid">
+        <div class="synthesis-card agree">
+          <div class="synthesis-label">Where they agree</div>
+          <ul class="memo-list">
+            <li>Brand moat is intact through the regulatory transition (5/8 — Forerunner, Verlinvest, L Catterton, Lerer Hippeau, Bessemer all reference subscriber + ARPU data)</li>
+            <li>Drawdown is severe enough to deserve framework engagement (5/8 — all firms flag −60% as off-trend for a +59% revenue grower)</li>
+            <li>Regulatory tail is bounded but unresolved (4/8 — OrbiMed, Endpoints News, Bessemer Healthcare, L Catterton differentiate "compounding enforcement = new baseline" from "fraud finding")</li>
+            <li>FCF compression is structural-near-term, not permanent (3/8 — Bessemer Atlas, Pershing Square, OrbiMed view capex absorption as 12-18 month phenomenon, not permanent margin loss)</li>
+          </ul>
+        </div>
+        <div class="synthesis-card diverge">
+          <div class="synthesis-label">Where they diverge</div>
+          <ul class="memo-list">
+            <li><strong>Direct portfolio firms (Forerunner, Verlinvest):</strong> would buy — drawdown is opportunity given thesis is intact</li>
+            <li><strong>Brand specialists (L Catterton, Lerer Hippeau):</strong> would consider with discipline — flag the reinvention-frequency risk</li>
+            <li><strong>Healthcare specialists (OrbiMed, Bessemer Health):</strong> would tactical-position — regulatory tail is bounded but caps full conviction</li>
+            <li><strong>Quality consumer activist (Pershing Square):</strong> would pass — FCF only 0.9% yield doesn't fit cash-generative threshold (HIMS isn't Chipotle yet)</li>
+          </ul>
+        </div>
+      </div>
+
+      <p style="margin-top: 24px; font-style: italic; color: var(--color-text-muted); border-top: 1px dashed var(--color-rule); padding-top: 18px;">
+        <strong>Read.</strong> Smart money convergence is moderate (5/8 framework fit) — better than a "hard pass" name but worse than the RBLX-style 6/8 high-conviction setup. The two firms with direct HIMS exposure (Forerunner, Verlinvest) would buy; brand specialists would consider with discipline; healthcare specialists would tactical-position; the cash-generative-quality lens (Pershing Square) would pass. Position-sizing camp split is wider than thesis-direction split — validates the 6/10 conviction and 30% first batch sizing rather than 35–40%.
+      </p>
+    </section>
+
+    <section class="memo-section" id="section-12">
+      <div class="section-chip"><span class="section-chip-num">12</span><span>ENTRY &amp; EXIT</span></div>
+      <h2 class="section-title">Entry &amp; exit plan</h2>
+
+      <div class="callout callout-ai">
+        <span class="tag">AI</span>
+        <div>Setup gate ✓ MET (drawdown 60.4% &gt; 50% threshold). Position recommendation: <strong>Considering</strong>. First batch <strong>30%</strong> (low end of 30–40% range — reflects regulatory tail + Q1 print binary risk in 13 days).</div>
+      </div>
+
+      <div class="entry-exit-grid">
+        <div class="plan-card">
+          <div class="plan-card-label">Entry — batched, regulatory-discipline</div>
+          <div class="batch-line">
+            <span class="batch-label">First batch (now or pre-print)</span>
+            <span class="batch-pct">30%</span>
+          </div>
+          <div class="batch-line">
+            <span class="batch-label">Add on Q1 print confirmation (May 11)</span>
+            <span class="batch-pct">35%</span>
+          </div>
+          <div class="batch-line">
+            <span class="batch-label">Final fill on SEC closure / Eucalyptus close</span>
+            <span class="batch-pct">35%</span>
+          </div>
+          <div class="batch-line">
+            <span class="batch-label">Target final position</span>
+            <span class="batch-pct">1.5–2.0%</span>
+          </div>
+
+          <h4 style="margin-top: 22px;">Add triggers (any 1)</h4>
+          <ul class="trigger-list add-triggers">
+            <li>Q1 FY26 print (May 11, 2026): revenue ≥$615M (upper half of guide) AND adj EBITDA ≥$50M AND subscribers ≥2.55M</li>
+            <li>SEC investigation closure or non-action notice — biggest single catalyst</li>
+            <li>Eucalyptus close announcement + integration roadmap (mid-2026)</li>
+            <li>Lilly distribution revenue contribution disclosed material (≥5% of bookings) on a quarterly print</li>
+            <li>Stock pulls back further to &lt;$22 with thesis intact (deeper drawdown without thesis flip)</li>
+            <li>Additional quality long-only firm (T. Rowe, Wellington, Fidelity Contrafund) discloses 13-F position increase</li>
+          </ul>
+
+          <h4 style="margin-top: 22px;">Final-fill triggers (any 1)</h4>
+          <ul class="trigger-list add-triggers">
+            <li>Capex normalization signal: FY26 capex / revenue tracking &lt;7% sequentially</li>
+            <li>Insider buying re-emerges (CEO Dudum or other senior officer open-market purchase)</li>
+            <li>2 consecutive quarters of GM expansion (branded mix margin floor revealed)</li>
+          </ul>
+        </div>
+
+        <div class="plan-card">
+          <div class="plan-card-label">Exit — explicit triggers</div>
+
+          <h4 style="margin-top: 0;">Exit on any 1</h4>
+          <ul class="trigger-list exit-triggers">
+            <li><strong>SEC investigation results in restatement</strong> of compounded-GLP-1-era revenue OR civil monetary penalty &gt;$200M — flips thesis to Structural</li>
+            <li>Q1 FY26 (May 11, 2026) materially MISSES: revenue &lt;$580M AND/OR adj EBITDA &lt;$30M AND/OR subscribers &lt;2.45M</li>
+            <li>FDA or DOJ takes additional enforcement action against HIMS (consent decree, injunction, warning letter)</li>
+            <li>Annual gross margin compresses below 70% — branded mix structurally unprofitable at HIMS' scale</li>
+            <li>CEO Dudum departure or other Co-founder/senior officer transition</li>
+            <li>FY26 actual revenue tracks &lt;$2.65B (below low end of guide) — cumulative miss signals platform damage</li>
+            <li>60%+ unrealized gain reached → look for replacement candidate (per philosophy)</li>
+            <li>Higher-conviction setup emerges + HIMS is lowest-conviction in book</li>
+          </ul>
+
+          <h4 style="margin-top: 22px;">What would change conviction</h4>
+          <ul class="trigger-list">
+            <li><strong>Up (7-8):</strong> SEC closure with no action; clean Q1 print at upper end of guide; capex normalization signal in Q3 print; Eucalyptus integration smooth.</li>
+            <li><strong>Down (4-5):</strong> SEC advances to Wells notice; Q1 misses; further insider sell cluster; capex stays elevated through 2027.</li>
+          </ul>
+        </div>
+      </div>
+
+      <p style="margin-top: 16px; font-size: 14px; color: var(--color-text-muted); border-top: 1px dashed var(--color-rule); padding-top: 14px;"><strong>Note on first-batch posture.</strong> Q1 FY26 prints May 11 — 13 days from this memo. Given that mgmt has already disclosed the $65M shipping-cadence headwind and Q1 EBITDA guide of $35–55M (6–9% margin), the print is partially de-risked on direction (everyone knows Q1 is weak); the question is whether HIMS comes in at the upper or lower half of the guide. Two reasonable postures: (a) deploy 30% pre-print and accept binary outcome (advantage: doesn't miss the rally if print is at upper end); (b) wait until post-print to deploy any (advantage: cuts binary risk entirely, accepts giving up first-batch upside). Spec defaults to option (a) given the regulatory de-risking from the Novo settle / Lilly deal already in price. Option (b) is more defensive and reasonable if the SEC overhang weighs more than thesis confidence.</p>
+    </section>
+
+    <section class="memo-section" id="section-13">
+      <div class="section-chip"><span class="section-chip-num">13</span><span>BULL / BEAR CASE</span></div>
+      <h2 class="section-title">Bull &amp; bear case (explicit)</h2>
+
+      <div class="bullbear-grid">
+        <div class="case-card bull">
+          <div class="case-card-label">🐂 Bull case · 18-month horizon</div>
+          <ol>
+            <li><strong>SEC closure + capex normalization rerates the multiple.</strong> If SEC investigation closes without action AND FY27 capex/revenue ratio drops to &lt;5% (FCF expanding back to 8%+ of revenue), HIMS rerates to 30× EV/EBITDA on FY26 guide ($338M) → $10B EV / $9.4B mkt cap → ~$43/share (+54% upside from $27.88).</li>
+            <li><strong>Eucalyptus contributes organically.</strong> Integration smooth in 2H 2026; international revenue scales from $134M (FY25) to $400M+ (FY27) — adds ~$60–100M EBITDA at scale. International TAM expansion validates the platform thesis.</li>
+            <li><strong>Branded GLP-1 routing scales.</strong> Combined Novo + Lilly distribution revenue scales toward $300M+ by 2027 (~10% of FY27 revenue). Margin compression bottoms in 2026 and stabilizes as branded volume offsets compounded-margin loss with operating leverage.</li>
+            <li><strong>Cross-sell flywheel reaccelerates subscriber growth.</strong> Subscribers reaccelerate from +13% (Q4 25) toward +20%+ as personalized treatments mix grows beyond 65% (peptides, longevity, primary care expansion). ARPU continues +20%+ trajectory.</li>
+          </ol>
+        </div>
+        <div class="case-card bear">
+          <div class="case-card-label">🐻 Bear case · 18-month horizon</div>
+          <ol>
+            <li><strong>SEC advances to Wells notice / restatement.</strong> Compounded-GLP-1-era revenue restated; civil penalty $300M+; multiple compresses back to 1.5× EV/Sales (TDOC-class) → ~$10/share (-65% from here).</li>
+            <li><strong>FDA tightens compounding further.</strong> Action against compounded peptides or other categories — model assumes "ongoing access to compounded semaglutide"; further enforcement breaks FY26 guide. Guide-walk-down event triggers re-rating.</li>
+            <li><strong>Subscriber growth decelerates below +10%.</strong> Q1 print at lower end of guide; cross-sell flywheel can't offset GLP-1 attrition; FY26 actual lands at low end of $2.7B guide; FY27 grows only +12–15%. Multi-year compounding setup breaks.</li>
+            <li><strong>Capex stays elevated through 2027.</strong> Pharmacy automation + Eucalyptus integration + international expansion means capex / revenue stays at 10%+. FCF compounding can't return; multiple stays capped at 22-24× EV/EBITDA.</li>
+            <li><strong>Macro recession + DTC consumer rotation.</strong> Discretionary consumer subscriptions get cut first in recession. Even strong execution can't overcome multiple compression in a -20% S&amp;P scenario.</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="memo-section" id="section-14">
+      <div class="section-chip"><span class="section-chip-num">14</span><span>SOURCES</span></div>
+      <h2 class="section-title">Data gaps &amp; sources</h2>
+
+      <div class="sources-grid">
+        <div class="source-group">
+          <h4>Official Filings (SEC EDGAR)</h4>
+          <ul>
+            <li><a href="https://www.sec.gov/Archives/edgar/data/1773751/000177375126000022/hims-20251231.htm" target="_blank" rel="noopener">10-K FY25 (filed Feb 23, 2026; period ended Dec 31, 2025)</a></li>
+            <li><a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&amp;CIK=0001773751&amp;type=10-Q" target="_blank" rel="noopener">10-Q Q3 FY25 (filed Nov 2025)</a></li>
+            <li><a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&amp;CIK=0001773751&amp;type=8-K&amp;dateb=&amp;owner=include&amp;count=40" target="_blank" rel="noopener">8-K filings (Eucalyptus deal Feb 19, Q4 earnings Feb 23)</a></li>
+            <li><a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&amp;CIK=0001773751&amp;type=DEF+14A" target="_blank" rel="noopener">DEF 14A 2026 proxy (filed Apr 28, 2026)</a></li>
+            <li><a href="https://data.sec.gov/api/xbrl/companyfacts/CIK0001773751.json" target="_blank" rel="noopener">SEC XBRL companyfacts (full structured financials)</a></li>
+            <li><a href="https://www.sec.gov/edgar/browse/?CIK=0001773751" target="_blank" rel="noopener">EDGAR filings index — Hims &amp; Hers Health</a></li>
+          </ul>
+        </div>
+        <div class="source-group">
+          <h4>Market Data &amp; IR</h4>
+          <ul>
+            <li><a href="https://finance.yahoo.com/quote/HIMS/" target="_blank" rel="noopener">Yahoo Finance — HIMS quote, analyst, ownership, news</a></li>
+            <li><a href="https://finance.yahoo.com/quote/HIMS/key-statistics/" target="_blank" rel="noopener">Yahoo Key Statistics (EV/Sales, EV/EBITDA, beta, short %, etc.)</a></li>
+            <li><a href="https://investors.hims.com/" target="_blank" rel="noopener">Hims &amp; Hers Investor Relations</a></li>
+            <li><a href="https://investors.hims.com/news/news-details/2026/Hims--Hers-Health-Inc--Reports-Fourth-Quarter-and-Full-Year-2025-Financial-Results/default.aspx" target="_blank" rel="noopener">Q4/FY25 earnings press release (Feb 23, 2026)</a></li>
+            <li><a href="https://www.fool.com/earnings/call-transcripts/2026/02/23/hims-hers-hims-earnings-call-transcript/" target="_blank" rel="noopener">Q4 FY25 earnings call transcript (Motley Fool)</a></li>
+            <li><a href="http://openinsider.com/screener?s=HIMS" target="_blank" rel="noopener">OpenInsider — HIMS Form 4 (last 6 months)</a></li>
+          </ul>
+        </div>
+        <div class="source-group">
+          <h4>News &amp; Analysis</h4>
+          <ul>
+            <li><span class="pub">Reuters ·</span><a href="https://www.reuters.com/business/healthcare-pharmaceuticals/fda-restrict-glp1-ingredients-used-nonapproved-compounded-drugs-2026-02-06/" target="_blank" rel="noopener">"US signals crackdown on compounded weight-loss drugs; Hims shares tumble"</a> · Feb 6, 2026</li>
+            <li><span class="pub">CNBC ·</span><a href="https://www.cnbc.com/2026/02/19/hims-hers-health-to-acquire-australias-eucalyptus-for-up-to-1point15-billion.html" target="_blank" rel="noopener">"Hims &amp; Hers to acquire Australia's Eucalyptus for up to $1.15 billion"</a> · Feb 19, 2026</li>
+            <li><span class="pub">Stocktwits ·</span><a href="https://stocktwits.com/news-articles/markets/equity/hims-stock-plummets-after-wall-street-downgrade-price-target-cuts-following-disappointing-q4-report/cZRwEc6R4Cq" target="_blank" rel="noopener">"HIMS Plummets After Wall Street Downgrade, PT Cuts Following 'Disappointing' Q4 Report"</a> · Feb 24, 2026</li>
+            <li><span class="pub">Fierce Healthcare ·</span><a href="https://www.fiercehealthcare.com/health-tech/hims-hers-bullish-growth-prospects-even-it-faces-increasing-regulatory-scrutiny" target="_blank" rel="noopener">"Hims &amp; Hers bullish growth prospects even as it faces increasing regulatory scrutiny"</a> · Feb 24, 2026</li>
+            <li><span class="pub">CNBC ·</span><a href="https://www.cnbc.com/2026/03/09/novo-nordisk-ends-legal-proceedings-hims-hers-compounded-weight-loss-drugs.html" target="_blank" rel="noopener">"Hims &amp; Hers shares surge after Novo Nordisk drops patent infringement case"</a> · Mar 9, 2026</li>
+            <li><span class="pub">24/7 Wall St ·</span><a href="https://247wallst.com/investing/2026/03/11/barclays-raises-hims-hers-hims-target-to-29-after-novo-deal-clears-legal-overhang-canaccord-cuts-progyny-pgny-on-cautious-2026-outlook/" target="_blank" rel="noopener">"Barclays Raises HIMS Target to $29 After Novo Deal Clears Legal Overhang"</a> · Mar 11, 2026</li>
+            <li><span class="pub">24/7 Wall St ·</span><a href="https://247wallst.com/investing/2026/04/24/jpmorgan-initiates-hims-hers-with-overweight-could-the-novo-nordisk-deal-be-the-turning-point/" target="_blank" rel="noopener">"JPMorgan Initiates Hims &amp; Hers With Overweight"</a> · Apr 24, 2026</li>
+            <li><span class="pub">TheStreet ·</span><a href="https://www.thestreet.com/investing/stocks/bank-of-america-resets-hims-and-hers-stock-price-target" target="_blank" rel="noopener">"Bank of America resets Hims &amp; Hers stock price target (Lilly deal)"</a> · Apr 27, 2026</li>
+          </ul>
+        </div>
+        <div class="source-group">
+          <h4>Data Gaps &amp; Methodology Notes</h4>
+          <ul>
+            <li><strong>Smart Money §11 ran in Bridge Mode.</strong> Healthcare/Services sector empty (0+0) in registry → cascade level 1 (§3.7.5) → 8 firms borrowed from Consumer Discretionary (5: Forerunner, Verlinvest, L Catterton, Lerer Hippeau, Pershing Square) + Healthcare/Pharma (3: OrbiMed, Bessemer Healthcare, Endpoints News). Forerunner + Verlinvest are direct HIMS-portfolio firms per registry framework_descriptors. To enable full mode for future runs, populate Healthcare/Services in <code style="font-family: var(--font-mono); font-size: 12px;">~/.claude/skills/stock-research/sector-firms.json</code>.</li>
+            <li><strong>Setup gate ✓ MET — 60.4% drawdown.</strong> Second contrarian setup tested in this skill that meets the gate (after RBLX 62.75%).</li>
+            <li><strong>Q1 FY26 earnings binary risk.</strong> Print is May 11, 2026 — 13 days after this memo. Mgmt has already disclosed the Q1 guide ($600–625M revenue, $35–55M adj EBITDA) so the print is partly de-risked on direction.</li>
+            <li><strong>SEC investigation magnitude.</strong> Confirmed via 10-K disclosure but no Wells notice as of Apr 2026; potential fine size, restatement risk, and timing not disclosed by management.</li>
+            <li><strong>DOJ referral disposition.</strong> The Feb 6 HHS-to-DOJ referral has not produced any public DOJ filing or declination notice. Status genuinely unknown.</li>
+            <li><strong>FY2021–FY2023 line items</strong> not refetched this run; revenue values from public 10-K history but gross margin / OCF / FCF for those years not re-verified.</li>
+            <li><strong>Forerunner / Verlinvest current HIMS positions</strong> not visible via 13-F (both are private/VC entities not subject to 13-F reporting); status of post-IPO holdings would require SC 13G or Form 144 review.</li>
+            <li><strong>News scraping</strong> via Reuters, CNBC, Fierce Healthcare, GuruFocus, 24/7 Wall St (8 articles). WSJ/Bloomberg/FT primary articles not directly scraped due to paywall.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+
+  </main>
+</div>
+
+<footer>
+  <div class="footer-main">
+    <div>
+      <div class="made-by">Marisa Ma</div>
+      <div>Stock Research · AI Research Series</div>
+    </div>
+    <div class="links">
+      <a href="#" onclick="window.print(); return false;">Export PDF</a>
+      <a href="#" onclick="copyMarkdown(); return false;">Copy Markdown</a>
+      <a href="hims.json" target="_blank">JSON sidecar</a>
+    </div>
+  </div>
+  <div class="disclaimer">
+    Generated April 28, 2026 · Sources current as of generation date. Not investment advice. For personal use; final decisions are the author's. Setup gate ✓ MET (60.4% drawdown). Smart Money §11 ran in Bridge Mode — Healthcare/Services sector empty in registry; 8 firms borrowed from Consumer Discretionary (5) + Healthcare/Pharma (3) per spec §3.7.5.
+  </div>
+</footer>
+
+<script>
+// ─── Comment system ───
+const TICKER = 'hims';
+
+function commentKey(sectionId) {
+  return `comment_${TICKER}_${sectionId}`;
+}
+
+function loadComments() {
+  document.querySelectorAll('section.memo-section').forEach(section => {
+    const id = section.id;
+    if (!id) return;
+
+    const chipDiv = section.querySelector('.section-chip');
+    if (!chipDiv) return;
+
+    const stored = localStorage.getItem(commentKey(id)) || '';
+    const hasComment = stored.length > 0;
+
+    // Wrap chip + button in flex container
+    const wrapper = document.createElement('div');
+    wrapper.className = 'section-with-comment-btn';
+    chipDiv.parentNode.insertBefore(wrapper, chipDiv);
+    wrapper.appendChild(chipDiv);
+
+    // Comment toggle button
+    const btn = document.createElement('button');
+    btn.className = 'btn-comment' + (hasComment ? ' has-comment' : '');
+    btn.innerHTML = '<span class="icon">💬</span><span class="btn-text">' + (hasComment ? 'Edit comment' : 'Add comment') + '</span>';
+    btn.addEventListener('click', function(e) { e.preventDefault(); togglePanel(id); });
+    wrapper.appendChild(btn);
+
+    // Comment panel
+    const panel = document.createElement('div');
+    panel.className = 'comment-panel' + (hasComment ? ' open' : '');
+    panel.id = 'comment-panel-' + id;
+    const escaped = stored.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    panel.innerHTML =
+      '<div class="comment-panel-label">📝 My note on this section</div>' +
+      '<textarea data-section="' + id + '" placeholder="Write your thoughts on this section…">' + escaped + '</textarea>' +
+      '<div class="comment-panel-meta">' +
+        '<span class="save-status">Auto-saves to your browser only</span>' +
+        '<button>Clear</button>' +
+      '</div>';
+    wrapper.parentNode.insertBefore(panel, wrapper.nextSibling);
+
+    const textarea = panel.querySelector('textarea');
+    const status = panel.querySelector('.save-status');
+    const clearBtn = panel.querySelector('.comment-panel-meta button');
+
+    let saveTimer;
+    textarea.addEventListener('input', function(e) {
+      const val = e.target.value;
+      if (val) localStorage.setItem(commentKey(id), val);
+      else localStorage.removeItem(commentKey(id));
+
+      btn.classList.toggle('has-comment', val.length > 0);
+      btn.querySelector('.btn-text').textContent = val.length > 0 ? 'Edit comment' : 'Add comment';
+
+      status.textContent = '✓ Saved';
+      clearTimeout(saveTimer);
+      saveTimer = setTimeout(function() { status.textContent = 'Auto-saves to your browser only'; }, 1500);
+    });
+
+    clearBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      if (!confirm('Clear this comment?')) return;
+      localStorage.removeItem(commentKey(id));
+      textarea.value = '';
+      panel.classList.remove('open');
+      btn.classList.remove('has-comment');
+      btn.querySelector('.btn-text').textContent = 'Add comment';
+    });
+  });
+}
+
+function togglePanel(id) {
+  const panel = document.getElementById('comment-panel-' + id);
+  if (!panel) return;
+  panel.classList.toggle('open');
+  if (panel.classList.contains('open')) {
+    panel.querySelector('textarea').focus();
+  }
+}
+
+// Copy as Markdown stub (production: serialize sections + comments to markdown)
+function copyMarkdown() {
+  alert('Copy as Markdown: in the live skill, this would serialize all 14 sections + your saved comments into Markdown format. (This run: stub — use Export PDF for now.)');
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', loadComments);
+} else {
+  loadComments();
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,434 @@
+{
+  "schema_version": "1.0",
+  "last_updated": "2026-04-25",
+  "_doc_url": "see ~/.claude/skills/stock-research/SKILL.md §14 for maintenance philosophy",
+  "_min_coverage_for_full_smart_money": "5 primary + 3 secondary = full §11. <5+3 = partial mode. 0+0 = §11 skipped.",
+
+  "sectors": {
+    "Consumer Discretionary": {
+      "primary": [
+        {
+          "name": "L Catterton",
+          "slug": "l-catterton",
+          "aum_usd_billion": 34,
+          "tier_descriptor": "Consumer brand specialist",
+          "framework_descriptor": "Backs Vuori, Honest Company, Peloton, Tarte. Active thesis on premium athleisure share-shift to specialist brands. Brand advantage durable but requires reinvention every 5-7 years.",
+          "blog_url": "https://www.lcatterton.com/insights",
+          "letters_url": null,
+          "public_communication_note": "Direct competitor exposure (Vuori) · sector reports public"
+        },
+        {
+          "name": "Forerunner Ventures",
+          "slug": "forerunner",
+          "aum_usd_billion": 2,
+          "tier_descriptor": "Consumer DTC pioneer",
+          "framework_descriptor": "Glossier, Bonobos, Warby Parker, Hims early-stage. Thesis: brand-as-distribution structurally won by specialists, not legacy incumbents.",
+          "blog_url": "https://forerunnerventures.com/blog",
+          "letters_url": null,
+          "public_communication_note": "Public blog · regular thought-leadership posts"
+        },
+        {
+          "name": "Lerer Hippeau",
+          "slug": "lerer-hippeau",
+          "aum_usd_billion": 1,
+          "tier_descriptor": "Lifestyle & commerce",
+          "framework_descriptor": "Allbirds, Casper, Warby Parker. View: brand fatigue real but slower than market prices in.",
+          "blog_url": "https://www.lererhippeau.com/articles",
+          "letters_url": null,
+          "public_communication_note": "Newsletter on consumer cycles"
+        },
+        {
+          "name": "Verlinvest",
+          "slug": "verlinvest",
+          "aum_usd_billion": 5,
+          "tier_descriptor": "Cross-stage consumer",
+          "framework_descriptor": "Vita Coco, Hims, Tony's Chocolonely, Oatly. Hybrid public + private. Believes premium pricing power = compounding moat when category healthy.",
+          "blog_url": "https://www.verlinvest.com/news",
+          "letters_url": null,
+          "public_communication_note": "Sector white papers · quarterly thesis posts"
+        },
+        {
+          "name": "Maveron",
+          "slug": "maveron",
+          "aum_usd_billion": 1.5,
+          "tier_descriptor": "Consumer specialist",
+          "framework_descriptor": "Allbirds, Trupanion, eBay (early). Howard Schultz-affiliated. Lens: consumer trust + repeat purchase > one-time hype.",
+          "blog_url": "https://maveron.com/news",
+          "letters_url": null,
+          "public_communication_note": "Periodic sector framework essays"
+        }
+      ],
+      "secondary": [
+        {
+          "name": "Pershing Square",
+          "slug": "pershing-square",
+          "aum_usd_billion": 15,
+          "tier_descriptor": "Activist long-only",
+          "framework_descriptor": "Bill Ackman. Quality consumer at distress: Chipotle, Restaurant Brands, Howard Hughes. Framework: simple model + cash-generative + activist lever + brand moat.",
+          "blog_url": null,
+          "letters_url": "https://pershingsquareholdings.com/letters/",
+          "public_communication_note": "Quarterly investor letters publicly available"
+        },
+        {
+          "name": "Akre Capital",
+          "slug": "akre",
+          "aum_usd_billion": 15,
+          "tier_descriptor": "Quality compounders",
+          "framework_descriptor": "Long-term holds in Mastercard, Constellation Software, Moody's. 'Three-legged stool' framework: business + management + reinvestment runway.",
+          "blog_url": "https://www.akrecapital.com/insights/",
+          "letters_url": null,
+          "public_communication_note": "Thought-piece essays on quality & compounding"
+        },
+        {
+          "name": "Polen Capital",
+          "slug": "polen",
+          "aum_usd_billion": 50,
+          "tier_descriptor": "Quality growth",
+          "framework_descriptor": "Concentrated quality growth book. Has historically held LULU. Framework: high ROIC + brand moat + secular tailwind.",
+          "blog_url": "https://www.polencapital.com/insights",
+          "letters_url": null,
+          "public_communication_note": "Quarterly commentary · sector deep dives"
+        }
+      ]
+    },
+
+    "Tech/Software": {
+      "primary": [
+        {
+          "name": "Bessemer Venture Partners",
+          "slug": "bessemer",
+          "aum_usd_billion": 20,
+          "tier_descriptor": "Cloud / SaaS thought leader",
+          "framework_descriptor": "Cloud Index publisher, State of the Cloud reports, deep public-comp visibility. Frameworks on NDR, magic number, rule of 40.",
+          "blog_url": "https://www.bvp.com/atlas",
+          "letters_url": null,
+          "public_communication_note": "Industry-leading SaaS analytics published quarterly"
+        },
+        {
+          "name": "Andreessen Horowitz (a16z)",
+          "slug": "a16z",
+          "aum_usd_billion": 45,
+          "tier_descriptor": "Generalist with deep tech bench",
+          "framework_descriptor": "Marc Andreessen / partners. Thesis-driven essays on infrastructure, AI, dev tools.",
+          "blog_url": "https://a16z.com/articles/",
+          "letters_url": null,
+          "public_communication_note": "Frequent essays + podcast"
+        },
+        {
+          "name": "Index Ventures",
+          "slug": "index",
+          "aum_usd_billion": 15,
+          "tier_descriptor": "Enterprise SaaS specialist",
+          "framework_descriptor": "Stripe, Slack, Datadog, Confluent early. Frameworks on bottom-up adoption, developer tools.",
+          "blog_url": "https://www.indexventures.com/perspectives",
+          "letters_url": null,
+          "public_communication_note": "Periodic perspective articles"
+        },
+        {
+          "name": "ICONIQ Growth",
+          "slug": "iconiq",
+          "aum_usd_billion": 80,
+          "tier_descriptor": "Growth-stage software",
+          "framework_descriptor": "Growth-stage SaaS / enterprise. Publishes benchmark reports.",
+          "blog_url": "https://www.iconiqcapital.com/growth/insights",
+          "letters_url": null,
+          "public_communication_note": "Quarterly benchmark reports on SaaS metrics"
+        },
+        {
+          "name": "Battery Ventures",
+          "slug": "battery",
+          "aum_usd_billion": 13,
+          "tier_descriptor": "B2B / vertical software",
+          "framework_descriptor": "Vertical SaaS, infrastructure, dev tools. Multi-stage approach.",
+          "blog_url": "https://www.battery.com/insights",
+          "letters_url": null,
+          "public_communication_note": "Insights blog with sector deep-dives"
+        }
+      ],
+      "secondary": [
+        {
+          "name": "Coatue Management",
+          "slug": "coatue",
+          "aum_usd_billion": 70,
+          "tier_descriptor": "Crossover hedge fund",
+          "framework_descriptor": "Public + private tech. Quarterly market reports. Thesis-led, growth-quality balance.",
+          "blog_url": null,
+          "letters_url": "https://www.coatue.com/research",
+          "public_communication_note": "Public-facing research occasionally"
+        },
+        {
+          "name": "Lone Pine Capital",
+          "slug": "lone-pine",
+          "aum_usd_billion": 18,
+          "tier_descriptor": "Quality growth long/short",
+          "framework_descriptor": "Steve Mandel / successors. Quality growth focus. Holdings include Microsoft, Meta, Amazon at various points.",
+          "blog_url": null,
+          "letters_url": null,
+          "public_communication_note": "Limited public commentary; positions visible via 13-F"
+        },
+        {
+          "name": "Stratechery (Ben Thompson)",
+          "slug": "stratechery",
+          "aum_usd_billion": null,
+          "tier_descriptor": "Independent analyst",
+          "framework_descriptor": "Aggregation theory, platform economics. Most-read public tech analyst in the industry.",
+          "blog_url": "https://stratechery.com",
+          "letters_url": null,
+          "public_communication_note": "Daily updates; publicly indispensable for tech-PM thinking"
+        }
+      ]
+    },
+
+    "Tech/Hardware": {
+      "primary": [
+        {
+          "name": "Khosla Ventures",
+          "slug": "khosla",
+          "tier_descriptor": "Deep tech / hardware",
+          "framework_descriptor": "Deep tech / chips / climate. Vinod Khosla.",
+          "blog_url": "https://www.khoslaventures.com/insights/",
+          "letters_url": null,
+          "public_communication_note": null
+        },
+        {
+          "name": "Lux Capital",
+          "slug": "lux",
+          "tier_descriptor": "Frontier hardware",
+          "framework_descriptor": "Frontier tech, semis, robotics, defense.",
+          "blog_url": "https://www.luxcapital.com/news/",
+          "letters_url": null,
+          "public_communication_note": null
+        },
+        {
+          "name": "Founders Fund",
+          "slug": "founders-fund",
+          "tier_descriptor": "Hardware-friendly generalist",
+          "framework_descriptor": "Peter Thiel-affiliated. Hardware (Anduril, Palantir).",
+          "blog_url": "https://foundersfund.com/the-prepared-mind/",
+          "letters_url": null,
+          "public_communication_note": null
+        }
+      ],
+      "secondary": [
+        {
+          "name": "SemiAnalysis (Dylan Patel)",
+          "slug": "semianalysis",
+          "tier_descriptor": "Independent semis analyst",
+          "framework_descriptor": "Independent semis analyst. Datacenter, GPU, AI infra deep technical.",
+          "blog_url": "https://www.semianalysis.com",
+          "letters_url": null,
+          "public_communication_note": null
+        },
+        {
+          "name": "Fabricated Knowledge",
+          "slug": "fabricated-knowledge",
+          "tier_descriptor": "Independent semis analyst",
+          "framework_descriptor": "Doug O'Laughlin. Semis, hardware capex cycles.",
+          "blog_url": "https://www.fabricatedknowledge.com",
+          "letters_url": null,
+          "public_communication_note": null
+        }
+      ],
+      "_note": "Hardware sector has fewer 5+3 (currently 3+2). Skill should accept partial registries — render §11 with however many firms are present, note coverage gap in §14 Data Gaps."
+    },
+
+    "Healthcare/Pharma": {
+      "primary": [
+        {
+          "name": "RA Capital",
+          "slug": "ra-capital",
+          "tier_descriptor": "Biotech crossover",
+          "framework_descriptor": "Biotech specialist crossover.",
+          "blog_url": null,
+          "letters_url": null,
+          "public_communication_note": "Limited public commentary"
+        },
+        {
+          "name": "OrbiMed",
+          "slug": "orbimed",
+          "tier_descriptor": "Healthcare specialist",
+          "framework_descriptor": "Healthcare-only. Public + private.",
+          "blog_url": "https://www.orbimed.com/news/",
+          "letters_url": null,
+          "public_communication_note": null
+        },
+        {
+          "name": "Bessemer Healthcare",
+          "slug": "bessemer-health",
+          "tier_descriptor": "Healthcare thought leader",
+          "framework_descriptor": "Bessemer's healthcare arm. Healthcare Atlas reports.",
+          "blog_url": "https://www.bvp.com/atlas/healthcare",
+          "letters_url": null,
+          "public_communication_note": null
+        }
+      ],
+      "secondary": [
+        {
+          "name": "Endpoints News",
+          "slug": "endpoints",
+          "tier_descriptor": "Industry analyst",
+          "framework_descriptor": "Industry trade publication with strong analytical voice.",
+          "blog_url": "https://endpts.com",
+          "letters_url": null,
+          "public_communication_note": null
+        }
+      ],
+      "_note": "Partial coverage (3+1). Add more firms as encountered."
+    },
+
+    "Fintech": {
+      "primary": [
+        {
+          "name": "Ribbit Capital",
+          "slug": "ribbit",
+          "tier_descriptor": "Fintech specialist",
+          "framework_descriptor": "Fintech specialist. Robinhood, Nubank, Coinbase early.",
+          "blog_url": null,
+          "letters_url": null,
+          "public_communication_note": "Limited public commentary"
+        },
+        {
+          "name": "QED Investors",
+          "slug": "qed",
+          "tier_descriptor": "Fintech specialist",
+          "framework_descriptor": "Fintech-only. Frank Rotman.",
+          "blog_url": "https://qedinvestors.com/insights/",
+          "letters_url": null,
+          "public_communication_note": null
+        }
+      ],
+      "secondary": [
+        {
+          "name": "Fintech Brainfood (Simon Taylor)",
+          "slug": "fintech-brainfood",
+          "tier_descriptor": "Independent fintech analyst",
+          "framework_descriptor": "Independent weekly fintech analysis.",
+          "blog_url": "https://fintechbrainfood.com",
+          "letters_url": null,
+          "public_communication_note": null
+        }
+      ],
+      "_note": "Thin coverage (2+1). Add more firms as encountered."
+    },
+
+    "Energy": {
+      "primary": [],
+      "secondary": [
+        {
+          "name": "Goehring & Rozencwajg",
+          "slug": "gnr",
+          "tier_descriptor": "Energy + resources specialist",
+          "framework_descriptor": "Natural resources / energy specialists. High-quality public commentary.",
+          "blog_url": "https://gorozen.com/research/",
+          "letters_url": null,
+          "public_communication_note": null
+        },
+        {
+          "name": "Andurand Capital",
+          "slug": "andurand",
+          "tier_descriptor": "Commodity/energy hedge fund",
+          "framework_descriptor": "Pierre Andurand. Public + private commentary on oil cycles.",
+          "blog_url": null,
+          "letters_url": null,
+          "public_communication_note": "Limited public commentary"
+        }
+      ],
+      "_note": "Energy has very few public-facing VCs. Currently 0 primary + 2 secondary. §11 will run in heavily-degraded mode for energy stocks until expanded."
+    },
+
+    "Healthcare/Devices": { "primary": [], "secondary": [], "_note": "Empty — populate as encountered. §11 will skip for tickers in this sector." },
+    "Healthcare/Services": { "primary": [], "secondary": [], "_note": "Empty — populate as encountered." },
+    "Consumer Staples": { "primary": [], "secondary": [], "_note": "Empty — populate as encountered." },
+    "Financials": { "primary": [], "secondary": [], "_note": "Empty — populate as encountered." },
+    "Materials": { "primary": [], "secondary": [], "_note": "Empty — populate as encountered." },
+    "Industrials": { "primary": [], "secondary": [], "_note": "Empty — populate as encountered." },
+    "Real Estate": { "primary": [], "secondary": [], "_note": "Empty — populate as encountered." },
+    "Utilities": { "primary": [], "secondary": [], "_note": "Empty — populate as encountered." },
+    "Communications": {
+      "primary": [
+        {
+          "name": "Andreessen Horowitz Games",
+          "slug": "a16z-games",
+          "aum_usd_billion": 45,
+          "tier_descriptor": "Gaming + creator economy + metaverse VC",
+          "framework_descriptor": "a16z Games vertical led by Andrew Chen, Jonathan Lai, Marc Andreessen. Thesis: network effects + creator economy + UGC moat are the durable platform advantages; AI-native platforms are the next wave; multiplayer-real-time differs structurally from video-latent-space generation. Active investments: Sky Mavis (Axie), Discord, Adobe (creator tools), Mythical, Roblox-adjacent infra. Wrote canonical 'Why every company will be a games company' essays.",
+          "blog_url": "https://a16z.com/games/",
+          "letters_url": null,
+          "public_communication_note": "a16z.com/games + Andrew Chen Substack + a16z podcast"
+        },
+        {
+          "name": "Bessemer Venture Partners",
+          "slug": "bessemer-platforms",
+          "aum_usd_billion": 20,
+          "tier_descriptor": "Platform & cloud thought leader",
+          "framework_descriptor": "Cloud Index publisher + State of the Cloud reports + Atlas platform analytics. Frameworks for platform companies: Rule of 40 (growth + FCF margin), magic number, NDR, gross margin trajectory. The platform-equivalent metrics for Communications names focus on engagement-monetization gap, deferred-revenue mechanics, and FCF inflection points.",
+          "blog_url": "https://www.bvp.com/atlas",
+          "letters_url": null,
+          "public_communication_note": "Atlas reports quarterly; State of the Cloud annual"
+        },
+        {
+          "name": "Sequoia Capital",
+          "slug": "sequoia",
+          "aum_usd_billion": 85,
+          "tier_descriptor": "Generalist with deep platform + creator economy bench",
+          "framework_descriptor": "Long history of consumer + platform investments: Discord, Reddit, Faze Clan, YouTube (early), Square, Stripe. Framework: founder-market fit + platform compounding + 'long-term greedy'. Sequoia partner essays emphasize that platform success compounds over decades, not quarters; market sentiment volatility on platform names is opportunity for long-horizon holders.",
+          "blog_url": "https://www.sequoiacap.com/article/",
+          "letters_url": null,
+          "public_communication_note": "Sequoia Perspectives blog + Crucible podcast"
+        },
+        {
+          "name": "Index Ventures",
+          "slug": "index-platforms",
+          "aum_usd_billion": 15,
+          "tier_descriptor": "Bottom-up platform & developer tools",
+          "framework_descriptor": "Stripe, Slack, Datadog, Confluent, Figma early. Platform thesis: bottom-up adoption + developer relations + extensibility moat. Applied to Communications/UGC names: creator economy + developer toolset + monetization economy combined produce durable moats unavailable to closed-ecosystem platforms.",
+          "blog_url": "https://www.indexventures.com/perspectives",
+          "letters_url": null,
+          "public_communication_note": "Perspectives essays + sector deep-dives"
+        },
+        {
+          "name": "Insight Partners",
+          "slug": "insight",
+          "aum_usd_billion": 80,
+          "tier_descriptor": "Growth-stage software & platform crossover",
+          "framework_descriptor": "ScaleUp playbook for growth-stage platforms. Framework: durable software economics scale through 'GTM efficiency × retention × pricing power'. Applied to Communications platforms: focus on net-revenue retention by cohort, payment platform mix (direct vs app store), and creator economy DevEx as leading indicators of long-term margin trajectory.",
+          "blog_url": "https://www.insightpartners.com/views/",
+          "letters_url": null,
+          "public_communication_note": "Views blog + ScaleUp Society community insights"
+        }
+      ],
+      "secondary": [
+        {
+          "name": "Stratechery (Ben Thompson)",
+          "slug": "stratechery",
+          "aum_usd_billion": null,
+          "tier_descriptor": "Independent platform analyst (most-read in tech)",
+          "framework_descriptor": "Aggregation Theory: aggregators win by owning user demand; platforms win by owning supply. Has written specifically about Roblox (UGC platform thesis), Meta (cross-feed aggregation), Spotify (commoditizing music label suppliers), Netflix (content as moat vs aggregation). Daily Updates + Weekly Article. The most influential public framework for analyzing Communications-sector business models.",
+          "blog_url": "https://stratechery.com",
+          "letters_url": null,
+          "public_communication_note": "Weekly Article free; Daily Update subscription. Search via stratechery.com/?s={ticker}"
+        },
+        {
+          "name": "Matthew Ball",
+          "slug": "matthew-ball",
+          "aum_usd_billion": null,
+          "tier_descriptor": "Independent metaverse analyst, author of 'The Metaverse'",
+          "framework_descriptor": "Wrote the canonical multi-part Roblox primer (2020-2022) and the 2022 book 'The Metaverse and How It Will Revolutionize Everything'. Framework: 'The 7 rules of the Metaverse' — interoperability, persistence, real-time, network effects, content creators, payment systems, and identity. Publishes regular research on gaming, streaming, and platform economics.",
+          "blog_url": "https://www.matthewball.co",
+          "letters_url": null,
+          "public_communication_note": "matthewball.co essays free; quarterly research notes"
+        },
+        {
+          "name": "Coatue Management",
+          "slug": "coatue",
+          "aum_usd_billion": 70,
+          "tier_descriptor": "Public + private tech crossover hedge fund",
+          "framework_descriptor": "Quality growth at scale, secular AI / platform thesis. Has historically held RBLX, META, GOOGL, NFLX. Framework: tech-quality balance — pair growth with operating margin trajectory + FCF compounding. Quarterly market reports cover platform names with multi-year horizon.",
+          "blog_url": null,
+          "letters_url": "https://www.coatue.com/research",
+          "public_communication_note": "Public-facing research + EMW conference presentations"
+        }
+      ]
+    }
+  }
+}

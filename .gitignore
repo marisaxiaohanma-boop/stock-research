@@ -1,0 +1,13 @@
+.agents/
+.claude/
+cache/
+runs.csv
+# root-level files only (not memos/)
+/rblx.html
+/hims.html
+/nke.html
+/tgt.html
+/rblx.json
+/hims.json
+/nke.json
+/tgt.json
